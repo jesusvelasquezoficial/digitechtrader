@@ -1,6 +1,12 @@
 <template>
-  <div id="app">
-    <b-navbar class="shadow-sm" toggleable="md" type="light" variant="light" sticky>
+  <div id="app" class="bg-light">
+    <b-navbar
+      class="shadow-sm"
+      toggleable="md"
+      type="light"
+      variant="light"
+      sticky
+    >
       <b-container>
         <b-navbar-brand href="#">PHOENIX SHOP</b-navbar-brand>
 
@@ -35,6 +41,77 @@
       </b-container>
     </b-navbar>
     <router-view />
+    <b-container class="text-left bg-light font-small pt-4 mt-4">
+      <hr />
+      <b-row>
+        <b-col md="6">
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Informacion</h5>
+          <p>
+            Somos una tienda online de ventas de productos que ayuda al pueblo
+            venezolano a realizar compras desde la comodidad de su hogar con
+            entregas a domiciolio.
+          </p>
+        </b-col>
+        <hr class="clearfix w-100 d-md-none" />
+        <b-col md="6" lg="3">
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Categorias</h5>
+          <ul class="list-unstyled">
+            <li><a href="#!">Alimentos</a></li>
+            <li><a href="#!">Aseo Personal</a></li>
+            <li><a href="#!">Licores</a></li>
+            <li><a href="#!">Limpienza</a></li>
+          </ul>
+        </b-col>
+        <hr class="clearfix w-100 d-md-none" />
+        <b-col md="6" lg="3">
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
+            Redes Sociales
+          </h5>
+          <ul class="list-unstyled">
+            <li><a href="#!">Facebook</a></li>
+            <li><a href="#!">Twitter</a></li>
+            <li><a href="#!">Instagram</a></li>
+            <!-- <li><a href="#!">WhatsApp</a></li> -->
+          </ul>
+        </b-col>
+      </b-row>
+    </b-container>
+    <hr class="clearfix w-100 d-md-none" />
+    <div class="text-center">
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm btn-fb mx-1"
+            ><i class="fab fa-facebook"> </i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm btn-tw mx-1"
+            ><i class="fab fa-twitter"> </i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm btn-gplus mx-1"
+            ><i class="fab fa-google-plus"> </i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm btn-li mx-1"
+            ><i class="fab fa-linkedin-in"> </i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-sm btn-dribbble mx-1"
+            ><i class="fab fa-dribbble"> </i
+          ></a>
+        </li>
+      </ul>
+    </div>
+    <div class="text-center py-3">
+      <b-container fluid>
+        &copy; 2020 Copyright:
+        <a href="https://phoenixshop.herokuapp.com"> www.phoenixshop.com </a>
+      </b-container>
+    </div>
   </div>
 </template>
 
