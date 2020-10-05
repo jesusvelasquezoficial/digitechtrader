@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="light" variant="light" sticky>
+    <b-navbar class="shadow-sm" toggleable="md" type="light" variant="light" sticky>
       <b-container>
         <b-navbar-brand href="#">PHOENIX SHOP</b-navbar-brand>
 
