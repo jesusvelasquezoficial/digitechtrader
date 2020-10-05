@@ -1,18 +1,140 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-container>
+      <b-carousel
+        id="carousel-1"
+        class="mt-3"
+        v-model="slide"
+        :interval="3000"
+        fade
+        background="#ababab"
+        img-width="1024"
+        img-height="300"
+        style="text-shadow: 1px 1px 2px #333"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <!-- Slides with image only -->
+        <b-carousel-slide>
+          <template v-slot:img>
+            <img
+              class="d-block img-fluid w-100"
+              src="@/assets/Slider/1.png"
+              alt="image slot"
+            /> </template
+        ></b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide>
+          <template v-slot:img>
+            <img
+              class="d-block img-fluid w-100"
+              src="@/assets/Slider/2.png"
+              alt="image slot"
+            />
+          </template>
+        </b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide>
+          <template v-slot:img>
+            <img
+              class="d-block img-fluid w-100"
+              src="@/assets/Slider/3.png"
+              alt="image slot"
+            />
+          </template>
+        </b-carousel-slide>
+
+        <!-- Slides with image only -->
+        <b-carousel-slide>
+          <template v-slot:img>
+            <img
+              class="d-block img-fluid w-100"
+              src="@/assets/Slider/3.png"
+              alt="image slot"
+            />
+          </template>
+        </b-carousel-slide>
+      </b-carousel>
+
+      <div class="mt-3">
+        <b-row id="categorias" cols="2">
+          <b-col md="4" lg="3" class="mb-3">
+            <a href="" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img src="@/assets/dieta-1.png" fluid alt="" width="32px" />
+                <b-card-text class="mt-2">ALIMENTOS</b-card-text></b-card
+              ></a
+            >
+          </b-col>
+          <b-col md="4" lg="3" class="mb-3">
+            <a href="" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/enjuague-bucal.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">ASEO PERSONAL</b-card-text></b-card
+              ></a
+            >
+          </b-col>
+          <b-col md="4" lg="3" class="mb-3">
+            <a href="" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img src="@/assets/licor-1.png" fluid alt="" width="32px" />
+                <b-card-text class="mt-2">LICORES</b-card-text></b-card
+              ></a
+            >
+          </b-col>
+          <b-col md="4" lg="3" class="mb-3">
+            <a href="" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img src="@/assets/limpieza-1.png" fluid alt="" width="32px" />
+                <b-card-text class="mt-2">LIMPIEZA</b-card-text></b-card
+              ></a
+            >
+          </b-col>
+        </b-row>
+      </div>
+    </b-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'Home',
+  name: "Home",
+  data() {
+    return {
+      slide: 0,
+      sliding: null,
+    };
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
+    },
+  },
   components: {
-    HelloWorld
-  }
-}
+    // HelloWorld
+  },
+};
 </script>
+<style scoped>
+.card-categoria {
+  min-height: 6rem !important;
+  font-size: 0.9rem !important;
+}
+.card-categoria:hover {
+  background-color: dodgerblue;
+  color: white !important;
+}
+</style>
