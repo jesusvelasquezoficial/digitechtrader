@@ -8,17 +8,17 @@
       sticky
     >
       <b-container>
-        <b-navbar-brand href="#">PHOENIX SHOP</b-navbar-brand>
+        <b-navbar-brand href="/">PHOENIX SHOP</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse class="text-left" id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item>
+            <b-nav-item to="/">
               <b-icon icon="house-door"></b-icon> INICIO
             </b-nav-item>
-            <b-nav-item> <b-icon icon="shop"></b-icon> TIENDA </b-nav-item>
+            <b-nav-item to="/tienda"> <b-icon icon="shop"></b-icon> TIENDA </b-nav-item>
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
                 <b-icon icon="person-circle"></b-icon> CUENTA
@@ -41,8 +41,8 @@
       </b-container>
     </b-navbar>
     <router-view />
+    <hr />
     <b-container class="text-left bg-light font-small pt-4 mt-4">
-      <hr />
       <b-row>
         <b-col md="6">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Informacion</h5>
@@ -58,8 +58,8 @@
           <ul class="list-unstyled">
             <li><a href="#!">Alimentos</a></li>
             <li><a href="#!">Aseo Personal</a></li>
+            <li><a href="#!">Aseo del Hogar</a></li>
             <li><a href="#!">Licores</a></li>
-            <li><a href="#!">Limpienza</a></li>
           </ul>
         </b-col>
         <hr class="clearfix w-100 d-md-none" />
@@ -127,7 +127,7 @@
   padding: 30px;
 }
 .nav-item a {
-  color: #2c3e50;
+  color: #2c3e50 !important;
 }
 .nav-item a:hover {
   font-weight: bold;

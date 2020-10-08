@@ -82,13 +82,12 @@
             <a href="" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img src="@/assets/limpieza-1.png" fluid alt="" width="32px" />
-                <b-card-text class="mt-2">LIMPIEZA</b-card-text></b-card
+                <b-card-text class="mt-2">ASEO DEL HOGAR</b-card-text></b-card
               ></a
             >
           </b-col>
         </b-row>
       </div>
-      <br><br><br><br><br><br><br><br><br>
     </b-container>
   </div>
 </template>
