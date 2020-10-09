@@ -4,7 +4,7 @@
       <b-row>
         <b-col class="offset-md-3">
           <b-input-group prepend="Buscar">
-            <b-form-input id="search"></b-form-input>
+            <b-form-input id="search" v-model="buscar" placeholder="Producto"></b-form-input>
           </b-input-group>
         </b-col>
       </b-row>
@@ -20,7 +20,7 @@
         </b-col>
         <b-col sm="8" md="9" lg="9">
           <b-row class="text-left">
-            <b-col md="6" lg="4" v-for="(producto, index) in productos" :key="index">
+            <b-col md="6" lg="4" v-for="(producto, index) in filtrarProductos" :key="index">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -46,9 +46,9 @@
                       </b-card-title>
                        <b-card-text>
                        <b-button-group class="d-flex roundered">
-                          <b-button v-on:click="restarCantProduct(index)" variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-button  v-on:click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
-                            <b-button v-on:click="sumarCantProduct(index)"  variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
+                          <b-button @click="restarCantProduct(index)" variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
+                           <b-button  @click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
+                            <b-button @click="sumarCantProduct(index)"  variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
                        </b-button-group>
                       </b-card-text>
                     </b-card-body>
@@ -67,6 +67,7 @@ export default {
   name: "Tienda",
   data() {
     return {
+      buscar: "",
       cart: [],
       productos: [
         {
@@ -79,67 +80,67 @@ export default {
         {
           imagen: "2",
           nombre: "Ron Cacique 750ml",
-          precio: 7.00,
+          precio: 7.0,
           cant: 1,
         },
         {
           imagen: "3",
           nombre: "Cerveza Corona",
-          precio: 2.50,
+          precio: 2.5,
           cant: 1,
         },
         {
           imagen: "4",
           nombre: "Arroz Primor",
-          precio: 3.50,
+          precio: 3.5,
           cant: 1,
         },
         {
           imagen: "5",
           nombre: "Azucar Konfit",
-          precio: 1.50,
+          precio: 1.5,
           cant: 1,
         },
         {
           imagen: "6",
           nombre: "Sal Celestial",
-          precio: 2.00,
+          precio: 2.0,
           cant: 1,
         },
         {
           imagen: "7",
           nombre: "Cafe Amanecer",
-          precio: 5.50,
+          precio: 5.5,
           cant: 1,
         },
         {
           imagen: "8",
           nombre: "Leche Galait",
-          precio: 4.00,
+          precio: 4.0,
           cant: 1,
         },
         {
           imagen: "9",
           nombre: "Corn Flakes",
-          precio: 2.00,
+          precio: 2.0,
           cant: 1,
         },
         {
           imagen: "10",
           nombre: "Mantequilla Mavesa",
-          precio: 2.50,
+          precio: 2.5,
           cant: 1,
         },
         {
           imagen: "11",
           nombre: "Mayonesa Mavesa",
-          precio: 2.50,
+          precio: 2.5,
           cant: 1,
         },
         {
           imagen: "12",
           nombre: "Salsa de Tomate",
-          precio: 2.00,
+          precio: 2.0,
           cant: 1,
         },
       ],
@@ -150,15 +151,15 @@ export default {
       var images = require.context("@/assets/Productos/", true, /\.png$/);
       return images("./" + id + ".png");
     },
-    restarCantProduct(id){
+    restarCantProduct(id) {
       var producto = this.productos[id];
-      producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant ; 
+      producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
     },
-    sumarCantProduct: function (id){
+    sumarCantProduct: function (id) {
       var producto = this.productos[id];
-      producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant ; 
+      producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
     },
-    setProductToCart(id){
+    setProductToCart(id) {
       var product = this.productos[id];
       var producto = JSON.stringify(product);
       var carrito = this.cart;
@@ -166,7 +167,29 @@ export default {
       console.log(carrito);
       console.log(JSON.parse(carrito[carrito.length - 1]));
       product.cant = 1;
-    }
+    },
+  },
+  computed: {
+    filtrarProductos: function () {
+      var ordenarProductos = this.productos.sort((a, b) => {
+        // Use toLowerCase() to ignore character casing
+        const productA = a.nombre.toLowerCase();
+        const productB = b.nombre.toLowerCase();
+
+        let comparison = 0;
+        if (productA > productB) {
+          comparison = 1;
+        } else if (productA < productB) {
+          comparison = -1;
+        }
+        return comparison;
+      });
+      
+      return ordenarProductos.filter((producto) => {
+        var nombre = producto.nombre.toString().toLowerCase();
+        return nombre.match(this.buscar.toLowerCase());
+      });
+    },
   },
 };
 </script>
