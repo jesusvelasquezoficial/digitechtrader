@@ -1,6 +1,6 @@
 <template>
   <div class="shop">
-    <b-container fluid="sm" class="mt-3">
+    <b-container fluid="md" class="mt-3">
       <b-row>
         <b-col class="offset-md-3">
           <b-input-group prepend="Buscar">
@@ -9,7 +9,7 @@
         </b-col>
       </b-row>
       <b-row class="mt-3">
-        <b-col xs="4" sm="4" md="3" lg="3">
+        <b-col class="d-none d-sm-block" sm="4" md="3" lg="3">
           <b-nav class="text-left" vertical>
             <b-nav-text><b class="txt-categorias">Categorias</b></b-nav-text>
             <b-nav-item to="#alimentos">Alimentos</b-nav-item>
@@ -18,9 +18,9 @@
             <b-nav-item to="#licores">Licores</b-nav-item>
           </b-nav>
         </b-col>
-        <b-col xs="8" sm="8" md="9" lg="9">
-          <b-row>
-            <b-col class="text-left" md="6" lg="4">
+        <b-col sm="8" md="9" lg="9">
+          <b-row class="text-left">
+            <b-col md="6" lg="4" v-for="(producto, index) in productos" :key="index">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -28,451 +28,27 @@
                 tag="article"
               >
                 <b-row no-gutters>
-                  <b-col sm="6" md="12">
+                  <b-col cols="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/1.png"
-                      alt="Image"
+                      :src="getImgProduct(producto.imagen)"
+                      :alt="producto.alt"
                       class="rounded-0"
                       width="100%"
                     ></img>
                   </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-left" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/2.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 7.00" sub-title="Ron Cacique 750ml">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-left" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/3.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <!-- Version 2 -->
-             <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/1.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/2.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 7.00" sub-title="Ron Cacique 750ml">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/3.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <!-- Version 3 -->
-             <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/1.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
+                  <b-col cols="6" sm="6" md="12">
                     <b-card-body>
                        <b-card-sub-title class="mb-2">
-                        Anis Cartujo 1L
+                        {{ producto.nombre }}
                       </b-card-sub-title>
                       <b-card-title>
-                        $ 7.00
-                      </b-card-title>
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark  border border-danger">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark border border-success">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/2.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body>
-                       <b-card-sub-title class="mb-2">
-                        Ron Cacique 750ml
-                      </b-card-sub-title>
-                      <b-card-title>
-                        $ 7.00
-                      </b-card-title>
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center border-secondary"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/3.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body>
-                       <b-card-sub-title class="mb-2">
-                        Cerveza Corona
-                      </b-card-sub-title>
-                      <b-card-title>
-                        $ 2.50
-                      </b-card-title>
-                      <b-card-text>
-                        <b-input-group>
-                          <template v-slot:prepend>
-                            <b-button class="bg-light text-dark border">-</b-button>
-                          </template>
-                          <b-form-input
-                            class="text-center border"
-                            v-model="producto.cant"
-                          ></b-form-input>
-                          <template v-slot:append>
-                            <b-button class="bg-light text-dark border">+</b-button>
-                          </template>
-                        </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <!-- Version 4 -->
-             <b-col class="text-left" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/1.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
-                     <b-card-text>
-                       <b-button-group class="d-flex roundered">
-                          <b-button   variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-input class="text-center" variant="outline-success" v-model="producto.cant"></b-input>
-                            <b-button   variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
-                       </b-button-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-left" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/2.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body>
-                       <b-card-sub-title class="mb-2">
-                        Ron Cacique 750ml
-                      </b-card-sub-title>
-                      <b-card-title>
-                        $ 7.00
+                        $ {{ producto.precio.toFixed(2) }}
                       </b-card-title>
                        <b-card-text>
                        <b-button-group class="d-flex roundered">
-                          <b-button   variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-button  variant="outline-success">{{producto.cant}}</b-button>
-                            <b-button   variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
-                       </b-button-group>
-                      </b-card-text>
-                    </b-card-body>
-                  </b-col>
-                </b-row>
-              </b-card>
-            </b-col>
-            <b-col class="text-center" md="6" lg="4">
-              <b-card
-                no-body
-                class="overflow-hidden shadow-sm mb-3"
-                style="max-width: 100%"
-                tag="article"
-              >
-                <b-row no-gutters>
-                  <b-col sm="6" md="12">
-                    <img
-                      src="@/assets/Productos/Licores/3.png"
-                      alt="Image"
-                      class="rounded-0"
-                      width="100%"
-                    ></img>
-                  </b-col>
-                  <b-col sm="6" md="12">
-                    <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
-                      <b-card-text>
-                       <b-button-group class="d-flex roundered">
-                          <b-button variant="none"><b-icon icon="dash-circle"></b-icon></b-button>
-                           <b-button pill variant="success">{{producto.cant}} <b-icon icon="cart-plus"></b-icon></b-button>
-                            <b-button   variant="none"><b-icon icon="plus-circle"></b-icon></b-button>
+                          <b-button v-on:click="restarCantProduct(index)" variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
+                           <b-button  v-on:click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
+                            <b-button v-on:click="sumarCantProduct(index)"  variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
                        </b-button-group>
                       </b-card-text>
                     </b-card-body>
@@ -491,13 +67,106 @@ export default {
   name: "Tienda",
   data() {
     return {
-      producto: {
-        img_src: "",
-        nombre: "",
-        precio: "",
-        cant: 1,
-      },
+      cart: [],
+      productos: [
+        {
+          imagen: "1",
+          alt: "Image",
+          nombre: "Anis Cartujo 1L",
+          precio: 7.0,
+          cant: 1,
+        },
+        {
+          imagen: "2",
+          nombre: "Ron Cacique 750ml",
+          precio: 7.00,
+          cant: 1,
+        },
+        {
+          imagen: "3",
+          nombre: "Cerveza Corona",
+          precio: 2.50,
+          cant: 1,
+        },
+        {
+          imagen: "4",
+          nombre: "Arroz Primor",
+          precio: 3.50,
+          cant: 1,
+        },
+        {
+          imagen: "5",
+          nombre: "Azucar Konfit",
+          precio: 1.50,
+          cant: 1,
+        },
+        {
+          imagen: "6",
+          nombre: "Sal Celestial",
+          precio: 2.00,
+          cant: 1,
+        },
+        {
+          imagen: "7",
+          nombre: "Cafe Amanecer",
+          precio: 5.50,
+          cant: 1,
+        },
+        {
+          imagen: "8",
+          nombre: "Leche Galait",
+          precio: 4.00,
+          cant: 1,
+        },
+        {
+          imagen: "9",
+          nombre: "Corn Flakes",
+          precio: 2.00,
+          cant: 1,
+        },
+        {
+          imagen: "10",
+          nombre: "Mantequilla Mavesa",
+          precio: 2.50,
+          cant: 1,
+        },
+        {
+          imagen: "11",
+          nombre: "Mayonesa Mavesa",
+          precio: 2.50,
+          cant: 1,
+        },
+        {
+          imagen: "12",
+          nombre: "Salsa de Tomate",
+          precio: 2.00,
+          cant: 1,
+        },
+      ],
     };
+  },
+  methods: {
+    getImgProduct(id) {
+      var images = require.context("@/assets/Productos/", true, /\.png$/);
+      return images("./" + id + ".png");
+    },
+    restarCantProduct(id){
+      var producto = this.productos[id];
+      producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant ; 
+    },
+    sumarCantProduct: function (id){
+      var producto = this.productos[id];
+      producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant ; 
+    },
+    setProductToCart(id){
+      var product = this.productos[id];
+      var producto = JSON.stringify(product);
+      var carrito = this.cart;
+      carrito.push(producto);
+      console.log(carrito);
+      console.log(JSON.parse(carrito[carrito.length - 1]));
+      product.cant = 1;
+    }
   },
 };
 </script>

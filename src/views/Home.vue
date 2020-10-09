@@ -50,18 +50,18 @@
       <div class="mt-3">
         <b-row id="categorias" cols="2">
           <b-col md="4" lg="3" class="mb-3">
-            <a href="" class="text-decoration-none"
+            <a href="/tienda" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/dieta-1.png" fluid alt="" width="32px" />
+                <img src="@/assets/Icons/dieta-1.png" fluid alt="" width="32px" />
                 <b-card-text class="mt-2">ALIMENTOS</b-card-text></b-card
               ></a
             >
           </b-col>
           <b-col md="4" lg="3" class="mb-3">
-            <a href="" class="text-decoration-none"
+            <a href="/tienda" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
-                  src="@/assets/enjuague-bucal.png"
+                  src="@/assets/Icons/enjuague-bucal.png"
                   fluid
                   alt=""
                   width="32px"
@@ -71,17 +71,17 @@
             >
           </b-col>
           <b-col md="4" lg="3" class="mb-3">
-            <a href="" class="text-decoration-none"
+            <a href="/tienda" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/licor-1.png" fluid alt="" width="32px" />
+                <img src="@/assets/Icons/licor-1.png" fluid alt="" width="32px" />
                 <b-card-text class="mt-2">LICORES</b-card-text></b-card
               ></a
             >
           </b-col>
           <b-col md="4" lg="3" class="mb-3">
-            <a href="" class="text-decoration-none"
+            <a href="/tienda" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/limpieza-1.png" fluid alt="" width="32px" />
+                <img src="@/assets/Icons/limpieza-1.png" fluid alt="" width="32px" />
                 <b-card-text class="mt-2">ASEO DEL HOGAR</b-card-text></b-card
               ></a
             >

@@ -18,7 +18,9 @@
             <b-nav-item to="/">
               <b-icon icon="house-door"></b-icon> INICIO
             </b-nav-item>
-            <b-nav-item to="/tienda"> <b-icon icon="shop"></b-icon> TIENDA </b-nav-item>
+            <b-nav-item to="/tienda">
+              <b-icon icon="shop"></b-icon> TIENDA
+            </b-nav-item>
             <b-nav-item-dropdown right>
               <template v-slot:button-content>
                 <b-icon icon="person-circle"></b-icon> CUENTA
@@ -56,10 +58,10 @@
         <b-col md="6" lg="3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Categorias</h5>
           <ul class="list-unstyled">
-            <li><a href="#!">Alimentos</a></li>
-            <li><a href="#!">Aseo Personal</a></li>
-            <li><a href="#!">Aseo del Hogar</a></li>
-            <li><a href="#!">Licores</a></li>
+            <li><a href="/tienda">Alimentos</a></li>
+            <li><a href="/tienda">Aseo Personal</a></li>
+            <li><a href="/tienda">Aseo del Hogar</a></li>
+            <li><a href="/tienda">Licores</a></li>
           </ul>
         </b-col>
         <hr class="clearfix w-100 d-md-none" />
