@@ -4,7 +4,7 @@
       <b-row>
         <b-col class="offset-md-3">
           <b-input-group prepend="Buscar">
-            <b-form-input id="search" v-model="buscar" placeholder="Producto"></b-form-input>
+            <b-form-input type="search" id="search" v-model="buscar" placeholder="Producto"></b-form-input>
           </b-input-group>
         </b-col>
       </b-row>
@@ -20,6 +20,9 @@
         </b-col>
         <b-col sm="8" md="9" lg="9">
           <b-row class="text-left">
+            <b-col class="my-5 text-center" v-if="filtrarProductos == '' ">
+              <h5>El producto <b>"{{buscar}}"</b> no esta en inventario</h5>
+            </b-col>
             <b-col md="6" lg="4" v-for="(producto, index) in filtrarProductos" :key="index">
               <b-card
                 no-body
