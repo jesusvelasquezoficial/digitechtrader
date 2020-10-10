@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <b-container>
+      <!-- Slider -->
       <b-carousel
         id="carousel-1"
         class="mt-3 shadow-sm"
@@ -46,19 +47,24 @@
           </template>
         </b-carousel-slide>
       </b-carousel>
-
+      <!-- Categorias -->
       <div class="mt-3">
         <b-row id="categorias" cols="2">
           <b-col md="4" lg="3" class="mb-3">
-            <a href="/tienda" class="text-decoration-none"
-              ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/Icons/dieta-1.png" fluid alt="" width="32px" />
-                <b-card-text class="mt-2">ALIMENTOS</b-card-text></b-card
-              ></a
-            >
+            <router-link to="/tienda/alimentos" class="text-decoration-none">
+              <b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/Icons/dieta-1.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">ALIMENTOS</b-card-text>
+              </b-card>
+            </router-link>
           </b-col>
           <b-col md="4" lg="3" class="mb-3">
-            <a href="/tienda" class="text-decoration-none"
+            <router-link to="/tienda/aseo-personal" class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Icons/enjuague-bucal.png"
@@ -67,23 +73,37 @@
                   width="32px"
                 />
                 <b-card-text class="mt-2">ASEO PERSONAL</b-card-text></b-card
-              ></a
+              ></router-link
             >
           </b-col>
           <b-col md="4" lg="3" class="mb-3">
-            <a href="/tienda" class="text-decoration-none"
+            <router-link
+              to="/tienda/aseo-del-hogar"
+              class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/Icons/licor-1.png" fluid alt="" width="32px" />
-                <b-card-text class="mt-2">LICORES</b-card-text></b-card
-              ></a
-            >
-          </b-col>
-          <b-col md="4" lg="3" class="mb-3">
-            <a href="/tienda" class="text-decoration-none"
-              ><b-card class="card-categoria shadow-sm" text-variant="dark">
-                <img src="@/assets/Icons/limpieza-1.png" fluid alt="" width="32px" />
+                <img
+                  src="@/assets/Icons/limpieza-1.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
                 <b-card-text class="mt-2">ASEO DEL HOGAR</b-card-text></b-card
-              ></a
+              ></router-link
+            >
+          </b-col>
+          <b-col md="4" lg="3" class="mb-3">
+            <router-link
+              to="/tienda/licores"
+              class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/Icons/licor-1.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">LICORES</b-card-text></b-card
+              ></router-link
             >
           </b-col>
         </b-row>

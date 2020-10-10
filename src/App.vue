@@ -58,10 +58,30 @@
         <b-col md="6" lg="3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Categorias</h5>
           <ul class="list-unstyled">
-            <li><a href="/tienda">Alimentos</a></li>
-            <li><a href="/tienda">Aseo Personal</a></li>
-            <li><a href="/tienda">Aseo del Hogar</a></li>
-            <li><a href="/tienda">Licores</a></li>
+            <li>
+              <router-link
+                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                >Alimentos</router-link
+              >
+            </li>
+            <li>
+              <router-link
+                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                >Aseo Personal</router-link
+              >
+            </li>
+            <li>
+              <router-link
+                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                >Aseo del Hogar</router-link
+              >
+            </li>
+            <li>
+              <router-link
+                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                >Licores</router-link
+              >
+            </li>
           </ul>
         </b-col>
         <hr class="clearfix w-100 d-md-none" />

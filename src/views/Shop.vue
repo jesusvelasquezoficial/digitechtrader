@@ -1,28 +1,49 @@
 <template>
   <div class="shop">
     <b-container fluid="md" class="mt-3">
+      <!-- Buscador de Prodcutos -->
       <b-row>
-        <b-col class="offset-md-3">
+        <b-col class="text-left" cols="0" sm="4" md="3">
+          <small>
+            <b-breadcrumb class="p-2 pl-3">
+              <b-breadcrumb-item to="/">
+                <b-icon icon="house-door" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>
+                inicio
+              </b-breadcrumb-item>
+              <b-breadcrumb-item to="/tienda">
+                <!-- <b-icon icon="shop" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon> -->
+                tienda
+              </b-breadcrumb-item>
+              <b-breadcrumb-item to="">{{$route.params.categoria}}</b-breadcrumb-item>
+            </b-breadcrumb>
+          </small>
+        </b-col>
+        <b-col cols="12" sm="8" md="9">
           <b-input-group prepend="Buscar">
             <b-form-input type="search" id="search" v-model="buscar" placeholder="Producto"></b-form-input>
           </b-input-group>
         </b-col>
       </b-row>
+      <!-- GRID de Productos -->
       <b-row class="mt-3">
+        <!-- Aside Categorias Productos -->
         <b-col class="d-none d-sm-block" sm="4" md="3" lg="3">
           <b-nav class="text-left" vertical>
             <b-nav-text><b class="txt-categorias">Categorias</b></b-nav-text>
-            <b-nav-item to="#alimentos">Alimentos</b-nav-item>
-            <b-nav-item to="#aseo-personal">Aseo Personal</b-nav-item>
-            <b-nav-item to="#aseo-del-hogar">Aseo del Hogar</b-nav-item>
-            <b-nav-item to="#licores">Licores</b-nav-item>
+            <b-nav-item to="/tienda/alimentos">Alimentos</b-nav-item>
+            <b-nav-item to="/tienda/aseo-personal">Aseo Personal</b-nav-item>
+            <b-nav-item to="/tienda/aseo-del-hogar">Aseo del Hogar</b-nav-item>
+            <b-nav-item to="/tienda/licores">Licores</b-nav-item>
           </b-nav>
         </b-col>
+        <!-- Lista de Productos -->
         <b-col sm="8" md="9" lg="9">
           <b-row class="text-left">
+            <!-- Sin Productos -->
             <b-col class="my-5 text-center" v-if="filtrarProductos == '' ">
               <h5>El producto <b>"{{buscar}}"</b> no esta en inventario</h5>
             </b-col>
+            <!-- Con Productos -->
             <b-col md="6" lg="4" v-for="(producto, index) in filtrarProductos" :key="index">
               <b-card
                 no-body
@@ -74,6 +95,7 @@ export default {
       cart: [],
       productos: [
         {
+          categoria: "licores",
           imagen: "1",
           alt: "Image",
           nombre: "Anis Cartujo 1L",
@@ -81,66 +103,77 @@ export default {
           cant: 1,
         },
         {
+          categoria: "licores",
           imagen: "2",
           nombre: "Ron Cacique 750ml",
           precio: 7.0,
           cant: 1,
         },
         {
+          categoria: "licores",
           imagen: "3",
           nombre: "Cerveza Corona",
           precio: 2.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "4",
           nombre: "Arroz Primor",
           precio: 3.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "5",
           nombre: "Azucar Konfit",
           precio: 1.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "6",
           nombre: "Sal Celestial",
           precio: 2.0,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "7",
           nombre: "Cafe Amanecer",
           precio: 5.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "8",
           nombre: "Leche Galait",
           precio: 4.0,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "9",
           nombre: "Corn Flakes",
           precio: 2.0,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "10",
           nombre: "Mantequilla Mavesa",
           precio: 2.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "11",
           nombre: "Mayonesa Mavesa",
           precio: 2.5,
           cant: 1,
         },
         {
+          categoria: "alimentos",
           imagen: "12",
           nombre: "Salsa de Tomate",
           precio: 2.0,
@@ -173,8 +206,12 @@ export default {
     },
   },
   computed: {
-    filtrarProductos: function () {
-      var ordenarProductos = this.productos.sort((a, b) => {
+    categoriaName() {
+      return this.$route.params.categoria;
+    },
+    filtrarProductos() {
+      // Ordenar producto por nombre
+      var productoOrdenado = this.productos.sort((a, b) => {
         // Use toLowerCase() to ignore character casing
         const productA = a.nombre.toLowerCase();
         const productB = b.nombre.toLowerCase();
@@ -187,11 +224,18 @@ export default {
         }
         return comparison;
       });
-      
-      return ordenarProductos.filter((producto) => {
+      // filtramos los productos por categoria
+      var filtroCategorias = productoOrdenado.filter((producto) => {
+        var categoriaProducto = producto.categoria.toString().toLowerCase();
+        return categoriaProducto.match(this.categoriaName);
+      });
+      // filtramos los productos por la busqueda
+      var productosEncontrados = filtroCategorias.filter((producto) => {
         var nombre = producto.nombre.toString().toLowerCase();
         return nombre.match(this.buscar.toLowerCase());
       });
+      return productosEncontrados;
+      s;
     },
   },
 };
@@ -199,5 +243,6 @@ export default {
 <style>
 .txt-categorias {
   font-size: 1.2rem !important;
+  text-transform: capitalize;
 }
 </style>
