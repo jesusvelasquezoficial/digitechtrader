@@ -269,7 +269,7 @@ export default {
   },
   methods: {
     getImgProduct(id) {
-      var images = require.context("@/assets/Productos/", true, /\.png$/);
+      var images = require.context("@/assets/ProductosOpt/", true, /\.png$/);
       return images("./" + id + ".png");
     },
     restarCantProduct(id) {
