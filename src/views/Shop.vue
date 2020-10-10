@@ -33,6 +33,7 @@
             <b-nav-item to="/tienda/alimentos">Alimentos</b-nav-item>
             <b-nav-item to="/tienda/aseo-personal">Aseo Personal</b-nav-item>
             <b-nav-item to="/tienda/aseo-del-hogar">Aseo del Hogar</b-nav-item>
+            <b-nav-item to="/tienda/electrodomesticos">Electrodomesticos</b-nav-item>
             <b-nav-item to="/tienda/licores">Licores</b-nav-item>
           </b-nav>
         </b-col>
@@ -177,6 +178,34 @@ export default {
           imagen: "12",
           nombre: "Salsa de Tomate",
           precio: 2.0,
+          cant: 1,
+        },
+        {
+          categoria: "electrodomesticos",
+          imagen: "13",
+          nombre: 'Tv Samsung 4K 55"',
+          precio: 450.00,
+          cant: 1,
+        },
+        {
+          categoria: "electrodomesticos",
+          imagen: "14",
+          nombre: "Nevera 300L",
+          precio: 319.99,
+          cant: 1,
+        },
+        {
+          categoria: "electrodomesticos",
+          imagen: "15",
+          nombre: "Congelador 200L",
+          precio: 249.99,
+          cant: 1,
+        },
+        {
+          categoria: "electrodomesticos",
+          imagen: "16",
+          nombre: "Licuadora 10 Vel..",
+          precio: 120.00,
           cant: 1,
         },
       ],
