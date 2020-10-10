@@ -8,7 +8,9 @@
       sticky
     >
       <b-container>
-        <b-navbar-brand href="/">PHOENIX SHOP</b-navbar-brand>
+        <b-navbar-brand class="d-flex align-items-center" href="/">
+        <img src="@/assets/icono.png" alt="" width="32px">
+        <b>PHOENIX SHOP</b></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

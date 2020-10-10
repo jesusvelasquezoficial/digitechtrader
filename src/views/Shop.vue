@@ -59,7 +59,7 @@
                       :alt="producto.alt"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col cols="6" sm="6" md="12">
                     <b-card-body>
@@ -72,7 +72,7 @@
                        <b-card-text>
                        <b-button-group class="d-flex roundered">
                           <b-button @click="restarCantProduct(index)" variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-button  @click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
+                           <b-button class="w-100"  @click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
                             <b-button @click="sumarCantProduct(index)"  variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
                        </b-button-group>
                       </b-card-text>
@@ -273,20 +273,21 @@ export default {
       return images("./" + id + ".png");
     },
     restarCantProduct(id) {
-      var producto = this.productos[id];
+      var producto = this.filtrarProductos[id];
       producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
     },
     sumarCantProduct: function (id) {
-      var producto = this.productos[id];
+      var producto = this.filtrarProductos[id];
       producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
     },
     setProductToCart(id) {
-      var product = this.productos[id];
+      var product = this.filtrarProductos[id];
       var producto = JSON.stringify(product);
       var carrito = this.cart;
       carrito.push(producto);
       console.log(carrito);
       console.log(JSON.parse(carrito[carrito.length - 1]));
+      alert(`Agrego ${product.cant} ${product.nombre} al Carrito`);
       product.cant = 1;
     },
   },
