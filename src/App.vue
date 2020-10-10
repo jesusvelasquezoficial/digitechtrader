@@ -60,25 +60,31 @@
           <ul class="list-unstyled">
             <li>
               <router-link
-                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                to="/tienda/alimentos"
                 >Alimentos</router-link
               >
             </li>
             <li>
               <router-link
-                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                to="/tienda/aseo-personal"
                 >Aseo Personal</router-link
               >
             </li>
             <li>
               <router-link
-                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                to="/tienda/aseo-del-hogar"
                 >Aseo del Hogar</router-link
               >
             </li>
             <li>
               <router-link
-                :to="{ name: 'tienda', params: { categoria: 'alimentos' } }"
+                to="/tienda/electrodomesticos"
+                >Electrodomesticos</router-link
+              >
+            </li>
+            <li>
+              <router-link
+                to="/tienda/licores"
                 >Licores</router-link
               >
             </li>
