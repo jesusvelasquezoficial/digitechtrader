@@ -157,7 +157,7 @@
   font-weight: bold;
 }
 .fondo {
-  background-image: url("./assets/fondo3.png");
+  background-image: url("./assets/fondo4.png");
   background-size: 30rem;
   background-attachment: fixed;
 }
