@@ -4,13 +4,14 @@
       class="shadow-sm"
       toggleable="md"
       type="light"
-      variant="light"
+      variant="white"
       sticky
     >
       <b-container>
         <b-navbar-brand class="d-flex align-items-center" href="/">
-        <img class="mb-1" src="@/assets/icono.png" alt="" width="32px">
-        <b class="pl-1"> PHOENIX SHOP</b></b-navbar-brand>
+          <img class="mb-1" src="@/assets/icono.png" alt="" width="32px" />
+          <b class="pl-1"> PHOENIX SHOP</b></b-navbar-brand
+        >
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -61,34 +62,25 @@
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Categorias</h5>
           <ul class="list-unstyled">
             <li>
-              <router-link
-                to="/tienda/alimentos"
-                >Alimentos</router-link
-              >
+              <router-link to="/tienda/alimentos">Alimentos</router-link>
             </li>
             <li>
-              <router-link
-                to="/tienda/aseo-personal"
+              <router-link to="/tienda/aseo-personal"
                 >Aseo Personal</router-link
               >
             </li>
             <li>
-              <router-link
-                to="/tienda/aseo-del-hogar"
+              <router-link to="/tienda/aseo-del-hogar"
                 >Aseo del Hogar</router-link
               >
             </li>
             <li>
-              <router-link
-                to="/tienda/electrodomesticos"
+              <router-link to="/tienda/electrodomesticos"
                 >Electrodomesticos</router-link
               >
             </li>
             <li>
-              <router-link
-                to="/tienda/licores"
-                >Licores</router-link
-              >
+              <router-link to="/tienda/licores">Licores</router-link>
             </li>
           </ul>
         </b-col>
@@ -154,7 +146,7 @@
   color: #2c3e50;
 }
 .navbar {
-  padding: 30px;
+  padding: 10px;
 }
 .nav-item a {
   color: #2c3e50 !important;
