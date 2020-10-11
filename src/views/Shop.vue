@@ -320,8 +320,14 @@ export default {
         var nombre = producto.nombre.toString().toLowerCase();
         return nombre.match(this.buscar.toLowerCase());
       });
+      var allProductos = productoOrdenado.filter((producto) => {
+        var nombre = producto.nombre.toString().toLowerCase();
+        return nombre.match(this.buscar.toLowerCase());
+      });
+      if(productosEncontrados == ""){
+       return allProductos; 
+      }
       return productosEncontrados;
-      s;
     },
   },
 };
