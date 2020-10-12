@@ -63,17 +63,22 @@
           Carrito
         </div>
       </template>
+     <template slot="footer">
+       <div class="d-flex align-items-center px-3 py-2">
+        <h5 class="mr-auto"><b>Sub-Total</b></h5>
+        <h3><b>19.50</b></h3>
+       </div>
+      </template>
       <b-container>
         <b-row>
           <b-col
             class="my-2 offset-1 d-flex justify-content-between align-items-center"
-            cols="11"
+            cols="10"
           >
             <div class="d-flex align-items-center">
-              <b-icon class="h4" icon="cart2"></b-icon>
-              <b>Carrito</b>
+              <b>Items</b>
             </div>
-            <div>6 <b>Items</b></div>
+            <div><b>2</b></div>
           </b-col>
           <b-col cols="12"
             ><b-card
@@ -100,8 +105,62 @@
                   </b-card-body>
                 </b-col>
               </b-row>
-            </b-card></b-col
-          >
+            </b-card>
+          </b-col>
+          <b-col cols="12"
+            ><b-card
+              no-body
+              class="overflow-hidden shadow-sm mb-3"
+              style="max-width: 100%"
+              tag="article"
+            >
+              <b-row class="text-left" no-gutters>
+                <b-col cols="4">
+                  <img
+                    src="@/assets/ProductosOpt/2.png"
+                    alt="producto.alt"
+                    class="rounded-0"
+                    width="100%"
+                  />
+                </b-col>
+                <b-col cols="8">
+                  <b-card-body>
+                    <b-card-sub-title class="mb-2">
+                      Ron Cacique
+                    </b-card-sub-title>
+                    <b-card-title> $ 7.00 </b-card-title>
+                  </b-card-body>
+                </b-col>
+              </b-row>
+            </b-card>
+          </b-col>
+          <b-col cols="12"
+            ><b-card
+              no-body
+              class="overflow-hidden shadow-sm mb-3"
+              style="max-width: 100%"
+              tag="article"
+            >
+              <b-row class="text-left" no-gutters>
+                <b-col cols="4">
+                  <img
+                    src="@/assets/ProductosOpt/7.png"
+                    alt="producto.alt"
+                    class="rounded-0"
+                    width="100%"
+                  />
+                </b-col>
+                <b-col cols="8">
+                  <b-card-body>
+                    <b-card-sub-title class="mb-2">
+                      Cafe Amanecer
+                    </b-card-sub-title>
+                    <b-card-title> $ 5.50 </b-card-title>
+                  </b-card-body>
+                </b-col>
+              </b-row>
+            </b-card>
+          </b-col>
         </b-row>
       </b-container>
       <div class="px-3 py-2"></div>
