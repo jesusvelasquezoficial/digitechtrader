@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       buscar: "",
-      cart: [],
+      carrito: [],
       productos: [
         {
           categoria: "licores",
@@ -283,8 +283,9 @@ export default {
     setProductToCart(id) {
       var product = this.filtrarProductos[id];
       var producto = JSON.stringify(product);
-      var carrito = this.cart;
+      var carrito = this.carrito;
       carrito.push(producto);
+      this.$store.commit('addProductoAlCarrito');
       console.log(carrito);
       console.log(JSON.parse(carrito[carrito.length - 1]));
       alert(`Agrego ${product.cant} ${product.nombre} al Carrito`);

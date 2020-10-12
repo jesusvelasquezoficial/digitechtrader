@@ -178,11 +178,23 @@ export default new Vuex.Store({
     ],
   },
   getters: {
-    getCantItemsInCart: state => {
+    getCantItemsInCart: (state) => {
       return state.carrito.length;
-    }
+    },
   },
-  mutations: {},
+  mutations: {
+    addProductoAlCarrito(state) {
+      var producto = {
+        categoria: "licores",
+        imagen: "1",
+        alt: "Image",
+        nombre: "Anis Cartujo 1L",
+        precio: 7.0,
+        cant: 1,
+      };
+      state.carrito.push(producto);
+    },
+  },
   actions: {},
   modules: {},
 });
