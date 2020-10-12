@@ -13,7 +13,10 @@
           <b class="pl-1"> PHOENIX SHOP</b></b-navbar-brand
         >
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle
+          target="nav-collapse"
+          class="ml-auto"
+        ></b-navbar-toggle>
 
         <b-collapse class="text-left" id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
@@ -37,14 +40,59 @@
                 REGISTRARSE</b-dropdown-item
               >
             </b-nav-item-dropdown>
-            <b-nav-item class="ml-2 ml-md-0">
-              <b-icon icon="cart2"></b-icon>
-              <b-badge pill variant="secondary">0</b-badge>
-            </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
+        <b-navbar-nav>
+          <b-nav-item v-b-toggle.sidebar-backdrop class="ml-2 ml-md-0">
+            <b-icon icon="cart2"></b-icon>
+            <b-badge pill variant="secondary">0</b-badge>
+          </b-nav-item>
+        </b-navbar-nav>
       </b-container>
     </b-navbar>
+    <div>
+      <b-sidebar
+        id="sidebar-backdrop"
+        backdrop-variant="dark"
+        backdrop
+        right
+        shadow
+      >
+        <div class="text-center ml-5 pl-5">
+          <h5 class="d-flex align-items-center">
+            <b-icon class="ml-2 h3" icon="cart2"></b-icon>
+            <b>Carrito</b>
+          </h5>
+        </div>
+        <div class="px-3 py-2">
+          <b-card
+            no-body
+            class="overflow-hidden shadow-sm mb-3"
+            style="max-width: 100%"
+            tag="article"
+          >
+            <b-row class="text-left" no-gutters>
+              <b-col cols="4" >
+                <img
+                  src="@/assets/ProductosOpt/1.png"
+                  alt="producto.alt"
+                  class="rounded-0"
+                  width="100%"
+                />
+              </b-col>
+              <b-col cols="8">
+                <b-card-body>
+                  <b-card-sub-title class="mb-2">
+                    Anis Cartujo
+                  </b-card-sub-title>
+                  <b-card-title> $ 7.00 </b-card-title>
+                </b-card-body>
+              </b-col>
+            </b-row>
+          </b-card>
+        </div>
+      </b-sidebar>
+    </div>
     <router-view />
     <div class="bg-white border">
       <b-container class="text-left font-small pt-4 mt-4">
@@ -132,8 +180,9 @@
           </li>
         </ul>
       </div>
-      <div class="text-center  mb-5">
-          &copy; 2020 Copyright <a href="https://phoenixshop.herokuapp.com"> www.phoenixshop.com </a>
+      <div class="text-center mb-5">
+        &copy; 2020 Copyright
+        <a href="https://phoenixshop.herokuapp.com"> www.phoenixshop.com </a>
       </div>
     </div>
   </div>

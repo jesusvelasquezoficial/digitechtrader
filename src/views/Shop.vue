@@ -253,7 +253,7 @@ export default {
         {
           categoria: "aseo-del-hogar",
           imagen: "23",
-          nombre: "Ajax Triple acción",
+          nombre: "Ajax Triple Acción",
           precio: 2.00,
           cant: 1,
         },
