@@ -53,8 +53,8 @@
     <b-sidebar
       id="sidebar-backdrop"
       backdrop-variant="dark"
-      header-class="pr-5 bg-white shadow-sm"
-      footer-class="bg-white border"
+      header-class="py-3 pr-5 bg-white shadow-sm"
+      footer-class="pt-3 bg-white border"
       width="360px"
       lazy
       backdrop
@@ -62,7 +62,7 @@
       shadow
     >
       <template slot="title">
-        <div class="pr-5 mr-4 d-flex align-items-center">
+        <div style="width: 185px;" class="d-flex align-items-center">
           <b-icon class="h4" icon="cart2"></b-icon>
           Carrito
         </div>
