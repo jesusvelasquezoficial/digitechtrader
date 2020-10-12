@@ -45,7 +45,7 @@
         <b-navbar-nav>
           <b-nav-item v-b-toggle.sidebar-backdrop class="ml-2 ml-md-0">
             <b-icon icon="cart2"></b-icon>
-            <b-badge pill variant="secondary">0</b-badge>
+            <b-badge pill variant="secondary">{{cantItemsInCart}}</b-badge>
           </b-nav-item>
         </b-navbar-nav>
       </b-container>
@@ -55,13 +55,14 @@
       backdrop-variant="dark"
       header-class="pr-5 bg-white shadow-sm"
       footer-class="bg-white border"
+      width="360px"
       lazy
       backdrop
       right
       shadow
     >
       <template slot="title">
-        <div class="pr-5 mr-3 d-flex align-items-center">
+        <div class="pr-5 mr-4 d-flex align-items-center">
           <b-icon class="h4" icon="cart2"></b-icon>
           Carrito
         </div>
@@ -75,7 +76,7 @@
             <div class="d-flex align-items-center">
               <b>Items</b>
             </div>
-            <div><b>6</b></div>
+            <div><b>1</b></div>
           </b-col>
         </b-row>
       </b-container>
@@ -89,7 +90,7 @@
               tag="article"
             >
               <b-row class="text-left" no-gutters>
-                <b-col cols="4">
+                <b-col cols="5">
                   <img
                     src="@/assets/ProductosOpt/1.png"
                     alt="producto.alt"
@@ -97,148 +98,39 @@
                     width="100%"
                   />
                 </b-col>
-                <b-col cols="8">
+                <b-col cols="6">
                   <b-card-body>
                     <b-card-sub-title class="mb-2">
-                      Anis Cartujo
+                      Anis cartujo
                     </b-card-sub-title>
                     <b-card-title> $ 7.00 </b-card-title>
+                    <b-card-text>
+                      <b-button-group class="d-flex roundered" size="sm">
+                        <b-button variant="outline-danger"
+                          ><b-icon icon="cart-dash"></b-icon
+                        ></b-button>
+                        <b-button
+                          block
+                          class="w-100"
+                          variant="outline-success"
+                          disabled
+                          >1</b-button
+                        >
+                        <b-button variant="outline-primary"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
+                      </b-button-group>
+                    </b-card-text>
                   </b-card-body>
                 </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="12"
-            ><b-card
-              no-body
-              class="overflow-hidden shadow-sm mb-3"
-              style="max-width: 100%"
-              tag="article"
-            >
-              <b-row class="text-left" no-gutters>
-                <b-col cols="4">
-                  <img
-                    src="@/assets/ProductosOpt/2.png"
-                    alt="producto.alt"
-                    class="rounded-0"
-                    width="100%"
-                  />
-                </b-col>
-                <b-col cols="8">
-                  <b-card-body>
-                    <b-card-sub-title class="mb-2">
-                      Ron Cacique
-                    </b-card-sub-title>
-                    <b-card-title> $ 7.00 </b-card-title>
-                  </b-card-body>
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="12"
-            ><b-card
-              no-body
-              class="overflow-hidden shadow-sm mb-3"
-              style="max-width: 100%"
-              tag="article"
-            >
-              <b-row class="text-left" no-gutters>
-                <b-col cols="4">
-                  <img
-                    src="@/assets/ProductosOpt/7.png"
-                    alt="producto.alt"
-                    class="rounded-0"
-                    width="100%"
-                  />
-                </b-col>
-                <b-col cols="8">
-                  <b-card-body>
-                    <b-card-sub-title class="mb-2">
-                      Cafe Amanecer
-                    </b-card-sub-title>
-                    <b-card-title> $ 5.50 </b-card-title>
-                  </b-card-body>
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="12"
-            ><b-card
-              no-body
-              class="overflow-hidden shadow-sm mb-3"
-              style="max-width: 100%"
-              tag="article"
-            >
-              <b-row class="text-left" no-gutters>
-                <b-col cols="4">
-                  <img
-                    src="@/assets/ProductosOpt/1.png"
-                    alt="producto.alt"
-                    class="rounded-0"
-                    width="100%"
-                  />
-                </b-col>
-                <b-col cols="8">
-                  <b-card-body>
-                    <b-card-sub-title class="mb-2">
-                      Anis Cartujo
-                    </b-card-sub-title>
-                    <b-card-title> $ 7.00 </b-card-title>
-                  </b-card-body>
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="12"
-            ><b-card
-              no-body
-              class="overflow-hidden shadow-sm mb-3"
-              style="max-width: 100%"
-              tag="article"
-            >
-              <b-row class="text-left" no-gutters>
-                <b-col cols="4">
-                  <img
-                    src="@/assets/ProductosOpt/2.png"
-                    alt="producto.alt"
-                    class="rounded-0"
-                    width="100%"
-                  />
-                </b-col>
-                <b-col cols="8">
-                  <b-card-body>
-                    <b-card-sub-title class="mb-2">
-                      Ron Cacique
-                    </b-card-sub-title>
-                    <b-card-title> $ 7.00 </b-card-title>
-                  </b-card-body>
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-          <b-col cols="12"
-            ><b-card
-              no-body
-              class="overflow-hidden shadow-sm mb-3"
-              style="max-width: 100%"
-              tag="article"
-            >
-              <b-row class="text-left" no-gutters>
-                <b-col cols="4">
-                  <img
-                    src="@/assets/ProductosOpt/7.png"
-                    alt="producto.alt"
-                    class="rounded-0"
-                    width="100%"
-                  />
-                </b-col>
-                <b-col cols="8">
-                  <b-card-body>
-                    <b-card-sub-title class="mb-2">
-                      Cafe Amanecer
-                    </b-card-sub-title>
-                    <b-card-title> $ 5.50 </b-card-title>
-                  </b-card-body>
+                <b-col class="p-2" cols="1">
+                  <button type="button" class="close" aria-label="Close">
+                    <b-icon
+                      class="border rounded"
+                      variant="danger"
+                      icon="x"
+                    ></b-icon>
+                  </button>
                 </b-col>
               </b-row>
             </b-card>
@@ -249,10 +141,12 @@
         <b-container>
           <div class="d-flex align-items-center px-3 py-2">
             <h5 class="mr-auto"><b>Sub-Total</b></h5>
-            <h3><b>19.50</b></h3>
+            <h3><b>$ 7.00</b></h3>
           </div>
           <div class="text-center px-3">
-            <b-button block class="mb-3" variant="success">Realizar Pedido</b-button>
+            <b-button block class="mb-3" variant="success"
+              >Realizar Pedido</b-button
+            >
           </div>
         </b-container>
       </template>
@@ -351,6 +245,19 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    cantItemsInCart() {
+      return this.$store.getters.getCantItemsInCart;
+    },
+  }
+};
+</script>
 
 <style>
 #app {

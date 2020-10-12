@@ -53,7 +53,7 @@
                 tag="article"
               >
                 <b-row no-gutters>
-                  <b-col cols="6" sm="6" md="12">
+                  <b-col cols="5" sm="6" md="12">
                     <img
                       :src="getImgProduct(producto.imagen)"
                       :alt="producto.alt"
@@ -61,7 +61,7 @@
                       width="100%"
                     />
                   </b-col>
-                  <b-col cols="6" sm="6" md="12">
+                  <b-col cols="7" sm="6" md="12">
                     <b-card-body>
                        <b-card-sub-title class="mb-2">
                         {{ producto.nombre }}
@@ -72,7 +72,7 @@
                        <b-card-text>
                        <b-button-group class="d-flex roundered">
                           <b-button @click="restarCantProduct(index)" variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-button class="w-100"  @click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
+                           <b-button class="w-100" block @click="setProductToCart(index)" variant="outline-success">{{producto.cant}}</b-button>
                             <b-button @click="sumarCantProduct(index)"  variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
                        </b-button-group>
                       </b-card-text>
