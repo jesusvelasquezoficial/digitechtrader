@@ -50,49 +50,62 @@
         </b-navbar-nav>
       </b-container>
     </b-navbar>
-    <div>
-      <b-sidebar
-        id="sidebar-backdrop"
-        backdrop-variant="dark"
-        backdrop
-        right
-        shadow
-      >
-        <div class="text-center ml-5 pl-5">
-          <h5 class="d-flex align-items-center">
-            <b-icon class="ml-2 h3" icon="cart2"></b-icon>
-            <b>Carrito</b>
-          </h5>
+    <b-sidebar
+      id="sidebar-backdrop"
+      backdrop-variant="dark"
+      backdrop
+      right
+      shadow
+    >
+      <template slot="title">
+        <div class="d-flex align-items-center">
+          <b-icon class="h4" icon="cart2"></b-icon>
+          Carrito
         </div>
-        <div class="px-3 py-2">
-          <b-card
-            no-body
-            class="overflow-hidden shadow-sm mb-3"
-            style="max-width: 100%"
-            tag="article"
+      </template>
+      <b-container>
+        <b-row>
+          <b-col
+            class="my-2 offset-1 d-flex justify-content-between align-items-center"
+            cols="11"
           >
-            <b-row class="text-left" no-gutters>
-              <b-col cols="4" >
-                <img
-                  src="@/assets/ProductosOpt/1.png"
-                  alt="producto.alt"
-                  class="rounded-0"
-                  width="100%"
-                />
-              </b-col>
-              <b-col cols="8">
-                <b-card-body>
-                  <b-card-sub-title class="mb-2">
-                    Anis Cartujo
-                  </b-card-sub-title>
-                  <b-card-title> $ 7.00 </b-card-title>
-                </b-card-body>
-              </b-col>
-            </b-row>
-          </b-card>
-        </div>
-      </b-sidebar>
-    </div>
+            <div class="d-flex align-items-center">
+              <b-icon class="h4" icon="cart2"></b-icon>
+              <b>Carrito</b>
+            </div>
+            <div>6 <b>Items</b></div>
+          </b-col>
+          <b-col cols="12"
+            ><b-card
+              no-body
+              class="overflow-hidden shadow-sm mb-3"
+              style="max-width: 100%"
+              tag="article"
+            >
+              <b-row class="text-left" no-gutters>
+                <b-col cols="4">
+                  <img
+                    src="@/assets/ProductosOpt/1.png"
+                    alt="producto.alt"
+                    class="rounded-0"
+                    width="100%"
+                  />
+                </b-col>
+                <b-col cols="8">
+                  <b-card-body>
+                    <b-card-sub-title class="mb-2">
+                      Anis Cartujo
+                    </b-card-sub-title>
+                    <b-card-title> $ 7.00 </b-card-title>
+                  </b-card-body>
+                </b-col>
+              </b-row>
+            </b-card></b-col
+          >
+        </b-row>
+      </b-container>
+      <div class="px-3 py-2"></div>
+    </b-sidebar>
     <router-view />
     <div class="bg-white border">
       <b-container class="text-left font-small pt-4 mt-4">
