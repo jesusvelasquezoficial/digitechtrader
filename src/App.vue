@@ -8,7 +8,7 @@
       sticky
     >
       <b-container>
-        <b-navbar-brand class="d-flex align-items-center" href="/">
+        <b-navbar-brand class="d-flex align-items-center" to="/">
           <img class="mb-1" src="@/assets/icono.png" alt="" width="32px" />
           <b class="pl-1"> PHOENIX SHOP</b></b-navbar-brand
         >
@@ -82,8 +82,8 @@
       </b-container>
       <b-container class="overflow-auto" style="max-height: 90%">
         <b-row>
-          <b-col cols="12"
-            ><b-card
+          <b-col cols="12" v-for="(producto, index) in productInCart" :key="index">
+            <b-card
               no-body
               class="overflow-hidden shadow-sm mb-3"
               style="max-width: 100%"
@@ -92,8 +92,8 @@
               <b-row class="text-left" no-gutters>
                 <b-col cols="5">
                   <img
-                    src="@/assets/ProductosOpt/1.png"
-                    alt="producto.alt"
+                    :src="getImgProduct(producto.imagen)"
+                    :alt="producto.alt"
                     class="rounded-0"
                     width="100%"
                   />
@@ -101,9 +101,9 @@
                 <b-col cols="6">
                   <b-card-body>
                     <b-card-sub-title class="mb-2">
-                      Anis cartujo
+                      {{ producto.nombre}}
                     </b-card-sub-title>
-                    <b-card-title> $ 7.00 </b-card-title>
+                    <b-card-title> $ {{ producto.precio.toFixed(2) }} </b-card-title>
                     <b-card-text>
                       <b-button-group class="d-flex roundered" size="sm">
                         <b-button variant="outline-danger"
@@ -114,7 +114,7 @@
                           class="w-100"
                           variant="outline-success"
                           disabled
-                          >1</b-button
+                          >{{producto.cant}}</b-button
                         >
                         <b-button variant="outline-primary"
                           ><b-icon icon="cart-plus"></b-icon
@@ -255,7 +255,16 @@ export default {
     cantItemsInCart() {
       return this.$store.getters.getCantItemsInCart;
     },
-  }
+    productInCart(){
+      return this.$store.getters.getProductInCart;
+    }
+  },
+  methods: {
+     getImgProduct(id) {
+      var images = require.context("@/assets/ProductosOpt/", true, /\.png$/);
+      return images("./" + id + ".png");
+    },
+  },
 };
 </script>
 

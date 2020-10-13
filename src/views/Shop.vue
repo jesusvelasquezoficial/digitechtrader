@@ -41,11 +41,11 @@
         <b-col sm="8" md="9" lg="9">
           <b-row class="text-left">
             <!-- Sin Productos -->
-            <b-col class="my-5 text-center" v-if="filtrarProductos == '' ">
+            <b-col class="my-5 text-center" v-if="productos == '' ">
               <h5>El producto <b>"{{buscar}}"</b> no esta en inventario</h5>
             </b-col>
             <!-- Con Productos -->
-            <b-col md="6" lg="4" v-for="(producto, index) in filtrarProductos" :key="index">
+            <b-col md="6" lg="4" v-for="(producto, index) in productos" :key="index">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -93,178 +93,6 @@ export default {
   data() {
     return {
       buscar: "",
-      carrito: [],
-      productos: [
-        {
-          categoria: "licores",
-          imagen: "1",
-          alt: "Image",
-          nombre: "Anis Cartujo 1L",
-          precio: 7.0,
-          cant: 1,
-        },
-        {
-          categoria: "licores",
-          imagen: "2",
-          nombre: "Ron Cacique 750ml",
-          precio: 7.0,
-          cant: 1,
-        },
-        {
-          categoria: "licores",
-          imagen: "3",
-          nombre: "Cerveza Corona",
-          precio: 2.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "4",
-          nombre: "Arroz Primor",
-          precio: 3.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "5",
-          nombre: "Azucar Konfit",
-          precio: 1.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "6",
-          nombre: "Sal Celestial",
-          precio: 2.0,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "7",
-          nombre: "Cafe Amanecer",
-          precio: 5.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "8",
-          nombre: "Leche Galait",
-          precio: 4.0,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "9",
-          nombre: "Corn Flakes",
-          precio: 2.0,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "10",
-          nombre: "Mantequilla Mavesa",
-          precio: 2.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "11",
-          nombre: "Mayonesa Mavesa",
-          precio: 2.5,
-          cant: 1,
-        },
-        {
-          categoria: "alimentos",
-          imagen: "12",
-          nombre: "Salsa de Tomate",
-          precio: 2.0,
-          cant: 1,
-        },
-        {
-          categoria: "electrodomesticos",
-          imagen: "13",
-          nombre: 'Tv Samsung 4K 55"',
-          precio: 450.00,
-          cant: 1,
-        },
-        {
-          categoria: "electrodomesticos",
-          imagen: "14",
-          nombre: "Nevera 300L",
-          precio: 319.99,
-          cant: 1,
-        },
-        {
-          categoria: "electrodomesticos",
-          imagen: "15",
-          nombre: "Congelador 200L",
-          precio: 249.99,
-          cant: 1,
-        },
-        {
-          categoria: "electrodomesticos",
-          imagen: "16",
-          nombre: "Licuadora 10 Vel..",
-          precio: 120.00,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-personal",
-          imagen: "17",
-          nombre: "Shampu Dove",
-          precio: 16.00,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-personal",
-          imagen: "18",
-          nombre: "Pasta Colgate",
-          precio: 3.50,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-personal",
-          imagen: "19",
-          nombre: "Condones Durex",
-          precio: 2.50,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-personal",
-          imagen: "20",
-          nombre: "Desodorante Speed Stick",
-          precio: 1.50,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-del-hogar",
-          imagen: "21",
-          nombre: "Cloro Desinfectante",
-          precio: 8.00,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-del-hogar",
-          imagen: "22",
-          nombre: "Ajax Super Degreaser",
-          precio: 2.00,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-del-hogar",
-          imagen: "23",
-          nombre: "Ajax Triple Acción",
-          precio: 2.00,
-          cant: 1,
-        },
-        {
-          categoria: "aseo-del-hogar",
-          imagen: "24",
-          nombre: "Tide",
-          precio: 7.00,
-          cant: 1,
-        },
-      ],
     };
   },
   methods: {
@@ -273,32 +101,29 @@ export default {
       return images("./" + id + ".png");
     },
     restarCantProduct(id) {
-      var producto = this.filtrarProductos[id];
+      var producto = this.productos[id];
       producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
     },
     sumarCantProduct: function (id) {
-      var producto = this.filtrarProductos[id];
+      var producto = this.productos[id];
       producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
     },
     setProductToCart(id) {
-      var product = this.filtrarProductos[id];
-      var producto = JSON.stringify(product);
-      var carrito = this.carrito;
-      carrito.push(producto);
-      this.$store.commit('addProductoAlCarrito');
-      console.log(carrito);
-      console.log(JSON.parse(carrito[carrito.length - 1]));
-      alert(`Agrego ${product.cant} ${product.nombre} al Carrito`);
-      product.cant = 1;
+      var producto = this.productos[id];
+      producto = JSON.stringify(producto);
+      console.log(JSON.parse(producto));
+      this.$store.commit('addProductoAlCarrito', producto);
+      // alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
+      // producto.cant = 1;
     },
   },
   computed: {
     categoriaName() {
       return this.$route.params.categoria;
     },
-    filtrarProductos() {
+    productos() {
       // Ordenar producto por nombre
-      var productoOrdenado = this.productos.sort((a, b) => {
+      var productosOrdenados = this.$store.getters.getProduct.sort((a, b) => {
         // Use toLowerCase() to ignore character casing
         const productA = a.nombre.toLowerCase();
         const productB = b.nombre.toLowerCase();
@@ -312,7 +137,7 @@ export default {
         return comparison;
       });
       // filtramos los productos por categoria
-      var filtroCategorias = productoOrdenado.filter((producto) => {
+      var filtroCategorias = productosOrdenados.filter((producto) => {
         var categoriaProducto = producto.categoria.toString().toLowerCase();
         return categoriaProducto.match(this.categoriaName);
       });
@@ -321,7 +146,7 @@ export default {
         var nombre = producto.nombre.toString().toLowerCase();
         return nombre.match(this.buscar.toLowerCase());
       });
-      var allProductos = productoOrdenado.filter((producto) => {
+      var allProductos = productosOrdenados.filter((producto) => {
         var nombre = producto.nombre.toString().toLowerCase();
         return nombre.match(this.buscar.toLowerCase());
       });

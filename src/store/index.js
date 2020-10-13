@@ -181,18 +181,26 @@ export default new Vuex.Store({
     getCantItemsInCart: (state) => {
       return state.carrito.length;
     },
+    getProductInCart: (state) => {
+      return state.carrito;
+    },
+    getProduct: (state) => {
+      return state.productos;
+    }
   },
   mutations: {
-    addProductoAlCarrito(state) {
-      var producto = {
-        categoria: "licores",
-        imagen: "1",
-        alt: "Image",
-        nombre: "Anis Cartujo 1L",
-        precio: 7.0,
-        cant: 1,
-      };
+    restarCantProduct(state, id) {
+      var producto = state.productos[id];
+      producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
+    },
+    sumarCantProduct: function(state, id) {
+      var producto = state.productos[id];
+      producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
+    },
+    addProductoAlCarrito(state, producto) {
+      producto = JSON.parse(producto)
       state.carrito.push(producto);
+      alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
     },
   },
   actions: {},
