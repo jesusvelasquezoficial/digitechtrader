@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Shop from "../views/Shop.vue";
+import Factura from "../views/Factura.vue";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ const routes = [{
     // component: () =>
     //   import ( /* webpackChunkName: "about" */ '../views/Shop.vue')
   },
+  {
+    path: "/factura",
+    name: "factura",
+    component: Factura
+  }
 ];
 
 const router = new VueRouter({

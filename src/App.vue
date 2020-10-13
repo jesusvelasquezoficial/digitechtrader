@@ -159,7 +159,7 @@
             </h3>
           </div>
           <div class="text-center px-3">
-            <b-button block class="mb-3" variant="success"
+            <b-button to="/factura" block :class="['mb-3', `${cantItemsInCart == 0 ? 'disabled' : '' }`]" variant="success"
               >Realizar Pedido</b-button
             >
           </div>
