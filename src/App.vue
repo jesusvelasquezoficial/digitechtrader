@@ -76,7 +76,9 @@
             <div class="d-flex align-items-center">
               <b>Items</b>
             </div>
-            <div><b>{{cantItemsInCart}}</b></div>
+            <div>
+              <b>{{ cantItemsInCart }}</b>
+            </div>
           </b-col>
         </b-row>
       </b-container>
@@ -112,7 +114,7 @@
                     </b-card-title>
                     <b-card-text>
                       <b-button-group class="d-flex roundered" size="sm">
-                        <b-button variant="outline-danger"
+                        <b-button @click="restar(index)" variant="outline-danger"
                           ><b-icon icon="cart-dash"></b-icon
                         ></b-button>
                         <b-button
@@ -122,7 +124,7 @@
                           disabled
                           >{{ producto.cant }}</b-button
                         >
-                        <b-button variant="outline-primary"
+                        <b-button @click="sumar(index)" variant="outline-primary"
                           ><b-icon icon="cart-plus"></b-icon
                         ></b-button>
                       </b-button-group>
@@ -130,7 +132,12 @@
                   </b-card-body>
                 </b-col>
                 <b-col class="p-2" cols="1">
-                  <button type="button" class="close" aria-label="Close">
+                  <button
+                    @click="delProductCart(index)"
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                  >
                     <b-icon
                       class="border rounded"
                       variant="danger"
@@ -274,6 +281,15 @@ export default {
     getImgProduct(id) {
       var images = require.context("@/assets/ProductosOpt/", true, /\.png$/);
       return images("./" + id + ".png");
+    },
+    delProductCart(id) {
+      this.$store.commit("delProductCart", id);
+    },
+    restar(id) {
+      this.$store.commit("restarCantProduct", id);
+    },
+    sumar(id) {
+      this.$store.commit("sumarCantProduct", id);
     },
   },
 };

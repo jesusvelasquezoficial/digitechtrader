@@ -199,11 +199,11 @@ export default new Vuex.Store({
   },
   mutations: {
     restarCantProduct(state, id) {
-      var producto = state.productos[id];
+      var producto = state.carrito[id];
       producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
     },
     sumarCantProduct: function(state, id) {
-      var producto = state.productos[id];
+      var producto = state.carrito[id];
       producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
     },
     addProductoAlCarrito(state, producto) {
@@ -219,6 +219,9 @@ export default new Vuex.Store({
         // alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
       }
     },
+    delProductCart(state, id) {
+      state.carrito.splice(id, 1);
+    }
   },
   actions: {},
   modules: {},
