@@ -114,7 +114,9 @@
                     </b-card-title>
                     <b-card-text>
                       <b-button-group class="d-flex roundered" size="sm">
-                        <b-button @click="restar(index)" variant="outline-danger"
+                        <b-button
+                          @click="restar(index)"
+                          variant="outline-danger"
                           ><b-icon icon="cart-dash"></b-icon
                         ></b-button>
                         <b-button
@@ -124,7 +126,9 @@
                           disabled
                           >{{ producto.cant }}</b-button
                         >
-                        <b-button @click="sumar(index)" variant="outline-primary"
+                        <b-button
+                          @click="sumar(index)"
+                          variant="outline-primary"
                           ><b-icon icon="cart-plus"></b-icon
                         ></b-button>
                       </b-button-group>
@@ -159,7 +163,11 @@
             </h3>
           </div>
           <div class="text-center px-3">
-            <b-button to="/factura" block :class="['mb-3', `${cantItemsInCart == 0 ? 'disabled' : '' }`]" variant="success"
+            <b-button
+              to="/factura"
+              block
+              :class="['mb-3', `${cantItemsInCart == 0 ? 'disabled' : ''}`]"
+              variant="success"
               >Realizar Pedido</b-button
             >
           </div>
