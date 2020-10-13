@@ -2,12 +2,12 @@
   <div class="factura">
     <b-container class="my-4">
       <b-row>
-        <b-col class="text-left" cols="12" md="6">
+        <b-col class="text-left mb-3" cols="12" md="6">
           <h5 class="text-left ml-1"><b>DETALLES DE FACTURACION</b></h5>
-          <b-container class="p-2 bg-light rounded border">
+          <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
             <b-form @submit="comprar" v-if="show">
               <b-row>
-                <b-col>
+                <b-col md="6">
                   <b-form-group
                     id="input-group-1"
                     label="Nombre:"
@@ -21,7 +21,7 @@
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
-                <b-col>
+                <b-col md="6">
                   <b-form-group
                     id="input-group-2"
                     label="Nombre:"
@@ -37,31 +37,15 @@
                 </b-col>
               </b-row>
               <b-row>
-                <b-col>
+                <b-col lg="6">
                   <b-form-group
                     id="input-group-3"
-                    label="Correo Electronico:"
+                    label="Telefono:"
                     label-for="input-3"
                     description=""
                   >
                     <b-form-input
                       id="input-3"
-                      v-model="form.email"
-                      type="email"
-                      required
-                      placeholder="Correo Electronico"
-                    ></b-form-input>
-                  </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-group
-                    id="input-group-4"
-                    label="Telefono:"
-                    label-for="input-4"
-                    description=""
-                  >
-                    <b-form-input
-                      id="input-4"
                       v-model="form.telefono"
                       type="number"
                       required
@@ -69,11 +53,27 @@
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
+                <b-col lg="6">
+                  <b-form-group
+                    id="input-group-4"
+                    label="Correo Electronico:"
+                    label-for="input-4"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-4"
+                      v-model="form.email"
+                      type="email"
+                      required
+                      placeholder="Correo Electronico"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
               </b-row>
             </b-form>
           </b-container>
         </b-col>
-        <b-col cols="12" md="6">
+        <b-col cols="12" md="6">  
           <h5 class="text-left ml-1"><b>FACTURA</b></h5>
           <b-table
             responsive
@@ -99,8 +99,7 @@
               </b-tr>
             </template>
           </b-table>
-
-          <b-button block @click="comprar" variant="dark"
+          <b-button class="shadow-sm" block @click="comprar" variant="dark"
             >FINALIZAR COMPRA</b-button
           >
         </b-col>
@@ -116,15 +115,9 @@ export default {
       form: {
         nombre: "",
         apellido: "",
+        telefono: "",
         email: "",
       },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn",
-      ],
       show: true,
       fields: [
         {
