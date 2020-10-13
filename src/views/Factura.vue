@@ -24,7 +24,7 @@
                 <b-col md="6">
                   <b-form-group
                     id="input-group-2"
-                    label="Nombre:"
+                    label="Apellido:"
                     label-for="input-2"
                   >
                     <b-form-input
