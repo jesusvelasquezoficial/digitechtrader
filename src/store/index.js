@@ -186,6 +186,15 @@ export default new Vuex.Store({
     },
     getProduct: (state) => {
       return state.productos;
+    },
+    getSubTotal(state) {
+      var precioProducto = 0;
+      state.carrito.forEach((element) => {
+        var precio = element.precio * element.cant;
+        precioProducto += precio;
+        return precioProducto;
+      });
+      return precioProducto;
     }
   },
   mutations: {
@@ -198,9 +207,17 @@ export default new Vuex.Store({
       producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
     },
     addProductoAlCarrito(state, producto) {
-      producto = JSON.parse(producto)
-      state.carrito.push(producto);
-      alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
+      producto = JSON.parse(producto);
+      var productoInCart = state.carrito.find((e) => {
+        return e.nombre == producto.nombre;
+      });
+      if (productoInCart) {
+        // alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
+        producto.cant = productoInCart.cant += producto.cant;
+      } else {
+        state.carrito.push(producto);
+        // alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
+      }
     },
   },
   actions: {},

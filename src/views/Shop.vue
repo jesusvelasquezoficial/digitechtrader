@@ -110,11 +110,9 @@ export default {
     },
     setProductToCart(id) {
       var producto = this.productos[id];
-      producto = JSON.stringify(producto);
-      console.log(JSON.parse(producto));
-      this.$store.commit('addProductoAlCarrito', producto);
-      // alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
-      // producto.cant = 1;
+      this.$store.commit('addProductoAlCarrito', JSON.stringify(producto));
+      alert(`Agrego ${producto.cant} ${producto.nombre} al Carrito`);
+      this.productos[id].cant = 1;
     },
   },
   computed: {

@@ -45,7 +45,7 @@
         <b-navbar-nav>
           <b-nav-item v-b-toggle.sidebar-backdrop class="ml-2 ml-md-0">
             <b-icon icon="cart2"></b-icon>
-            <b-badge pill variant="secondary">{{cantItemsInCart}}</b-badge>
+            <b-badge pill variant="secondary">{{ cantItemsInCart }}</b-badge>
           </b-nav-item>
         </b-navbar-nav>
       </b-container>
@@ -62,7 +62,7 @@
       shadow
     >
       <template slot="title">
-        <div style="width: 185px;" class="d-flex align-items-center">
+        <div style="width: 185px" class="d-flex align-items-center">
           <b-icon class="h4" icon="cart2"></b-icon>
           Carrito
         </div>
@@ -76,13 +76,17 @@
             <div class="d-flex align-items-center">
               <b>Items</b>
             </div>
-            <div><b>1</b></div>
+            <div><b>{{cantItemsInCart}}</b></div>
           </b-col>
         </b-row>
       </b-container>
       <b-container class="overflow-auto" style="max-height: 90%">
         <b-row>
-          <b-col cols="12" v-for="(producto, index) in productInCart" :key="index">
+          <b-col
+            cols="12"
+            v-for="(producto, index) in productInCart"
+            :key="index"
+          >
             <b-card
               no-body
               class="overflow-hidden shadow-sm mb-3"
@@ -101,9 +105,11 @@
                 <b-col cols="6">
                   <b-card-body>
                     <b-card-sub-title class="mb-2">
-                      {{ producto.nombre}}
+                      {{ producto.nombre }}
                     </b-card-sub-title>
-                    <b-card-title> $ {{ producto.precio.toFixed(2) }} </b-card-title>
+                    <b-card-title>
+                      $ {{ producto.precio.toFixed(2) }}
+                    </b-card-title>
                     <b-card-text>
                       <b-button-group class="d-flex roundered" size="sm">
                         <b-button variant="outline-danger"
@@ -114,7 +120,7 @@
                           class="w-100"
                           variant="outline-success"
                           disabled
-                          >{{producto.cant}}</b-button
+                          >{{ producto.cant }}</b-button
                         >
                         <b-button variant="outline-primary"
                           ><b-icon icon="cart-plus"></b-icon
@@ -141,7 +147,9 @@
         <b-container>
           <div class="d-flex align-items-center px-3 py-2">
             <h5 class="mr-auto"><b>Sub-Total</b></h5>
-            <h3><b>$ 7.00</b></h3>
+            <h3>
+              <b>$ {{ subTotal.toFixed(2) }}</b>
+            </h3>
           </div>
           <div class="text-center px-3">
             <b-button block class="mb-3" variant="success"
@@ -255,12 +263,15 @@ export default {
     cantItemsInCart() {
       return this.$store.getters.getCantItemsInCart;
     },
-    productInCart(){
+    productInCart() {
       return this.$store.getters.getProductInCart;
-    }
+    },
+    subTotal() {
+      return this.$store.getters.getSubTotal;
+    },
   },
   methods: {
-     getImgProduct(id) {
+    getImgProduct(id) {
       var images = require.context("@/assets/ProductosOpt/", true, /\.png$/);
       return images("./" + id + ".png");
     },
