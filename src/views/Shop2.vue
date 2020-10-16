@@ -30,7 +30,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/1.png"
+                      src="@/assets/ProductosOpt/1.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -68,7 +68,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/2.png"
+                      src="@/assets/ProductosOpt/2.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -106,7 +106,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/3.png"
+                      src="@/assets/ProductosOpt/3.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -145,7 +145,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/1.png"
+                      src="@/assets/ProductosOpt/1.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -183,7 +183,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/2.png"
+                      src="@/assets/ProductosOpt/2.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -221,7 +221,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/3.png"
+                      src="@/assets/ProductosOpt/3.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -260,7 +260,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/1.png"
+                      src="@/assets/ProductosOpt/1.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -304,7 +304,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/2.png"
+                      src="@/assets/ProductosOpt/2.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -348,7 +348,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/3.png"
+                      src="@/assets/ProductosOpt/3.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -393,7 +393,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/1.png"
+                      src="@/assets/ProductosOpt/1.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -424,7 +424,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/2.png"
+                      src="@/assets/ProductosOpt/2.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
@@ -460,7 +460,7 @@
                 <b-row no-gutters>
                   <b-col col="6" sm="6" md="12">
                     <img
-                      src="@/assets/Productos/Licores/3.png"
+                      src="@/assets/ProductosOpt/3.png"
                       alt="Image"
                       class="rounded-0"
                       width="100%"
