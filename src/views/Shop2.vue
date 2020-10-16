@@ -34,7 +34,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
@@ -51,7 +51,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -72,7 +74,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 7.00" sub-title="Ron Cacique 750ml">
@@ -89,7 +91,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block pill variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -110,7 +114,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
@@ -127,7 +131,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block squared variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -135,7 +141,7 @@
               </b-card>
             </b-col>
             <!-- Version 2 -->
-             <b-col class="text-center" md="6" lg="4">
+            <b-col class="text-center" md="6" lg="4">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -149,7 +155,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
@@ -166,7 +172,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -187,7 +195,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 7.00" sub-title="Ron Cacique 750ml">
@@ -204,7 +212,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block pill variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -225,7 +235,7 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
@@ -242,7 +252,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block squared variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -250,7 +262,7 @@
               </b-card>
             </b-col>
             <!-- Version 3 -->
-             <b-col class="text-center" md="6" lg="4">
+            <b-col class="text-center" md="6" lg="4">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -264,30 +276,36 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body>
-                       <b-card-sub-title class="mb-2">
+                      <b-card-sub-title class="mb-2">
                         Anis Cartujo 1L
                       </b-card-sub-title>
-                      <b-card-title>
-                        $ 7.00
-                      </b-card-title>
+                      <b-card-title> $ 7.00 </b-card-title>
                       <b-card-text>
                         <b-input-group>
                           <template v-slot:prepend>
-                            <b-button class="bg-light text-dark  border border-danger">-</b-button>
+                            <b-button
+                              class="bg-light text-dark border border-danger"
+                              >-</b-button
+                            >
                           </template>
                           <b-form-input
                             class="text-center"
                             v-model="producto.cant"
                           ></b-form-input>
                           <template v-slot:append>
-                            <b-button class="bg-light text-dark border border-success">+</b-button>
+                            <b-button
+                              class="bg-light text-dark border border-success"
+                              >+</b-button
+                            >
                           </template>
                         </b-input-group>
-                        <b-button block variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -308,16 +326,14 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body>
-                       <b-card-sub-title class="mb-2">
+                      <b-card-sub-title class="mb-2">
                         Ron Cacique 750ml
                       </b-card-sub-title>
-                      <b-card-title>
-                        $ 7.00
-                      </b-card-title>
+                      <b-card-title> $ 7.00 </b-card-title>
                       <b-card-text>
                         <b-input-group>
                           <template v-slot:prepend>
@@ -331,7 +347,9 @@
                             <b-button class="bg-light text-dark">+</b-button>
                           </template>
                         </b-input-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block pill variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -352,30 +370,34 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body>
-                       <b-card-sub-title class="mb-2">
+                      <b-card-sub-title class="mb-2">
                         Cerveza Corona
                       </b-card-sub-title>
-                      <b-card-title>
-                        $ 2.50
-                      </b-card-title>
+                      <b-card-title> $ 2.50 </b-card-title>
                       <b-card-text>
                         <b-input-group>
                           <template v-slot:prepend>
-                            <b-button class="bg-light text-dark border">-</b-button>
+                            <b-button class="bg-light text-dark border"
+                              >-</b-button
+                            >
                           </template>
                           <b-form-input
                             class="text-center border"
                             v-model="producto.cant"
                           ></b-form-input>
                           <template v-slot:append>
-                            <b-button class="bg-light text-dark border">+</b-button>
+                            <b-button class="bg-light text-dark border"
+                              >+</b-button
+                            >
                           </template>
                         </b-input-group>
-                        <b-button block squared variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                        <b-button block squared variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -383,7 +405,7 @@
               </b-card>
             </b-col>
             <!-- Version 4 -->
-             <b-col class="text-left" md="6" lg="4">
+            <b-col class="text-left" md="6" lg="4">
               <b-card
                 no-body
                 class="overflow-hidden shadow-sm mb-3"
@@ -397,17 +419,27 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 7.00" sub-title="Anis Cartujo 1L">
-                     <b-card-text>
-                       <b-button-group class="d-flex roundered">
-                          <b-button   variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-input class="text-center" variant="outline-success" v-model="producto.cant"></b-input>
-                            <b-button   variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
-                       </b-button-group>
-                        <b-button block pill variant="success" class="mt-2"><b-icon icon="cart-plus"></b-icon></b-button>
+                      <b-card-text>
+                        <b-button-group class="d-flex roundered">
+                          <b-button variant="outline-danger"
+                            ><b-icon icon="cart-dash"></b-icon
+                          ></b-button>
+                          <b-input
+                            class="text-center"
+                            variant="outline-success"
+                            v-model="producto.cant"
+                          ></b-input>
+                          <b-button variant="outline-primary"
+                            ><b-icon icon="cart-plus"></b-icon
+                          ></b-button>
+                        </b-button-group>
+                        <b-button block pill variant="success" class="mt-2"
+                          ><b-icon icon="cart-plus"></b-icon
+                        ></b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -428,22 +460,26 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body>
-                       <b-card-sub-title class="mb-2">
+                      <b-card-sub-title class="mb-2">
                         Ron Cacique 750ml
                       </b-card-sub-title>
-                      <b-card-title>
-                        $ 7.00
-                      </b-card-title>
-                       <b-card-text>
-                       <b-button-group class="d-flex roundered">
-                          <b-button   variant="outline-danger"><b-icon icon="cart-dash"></b-icon></b-button>
-                           <b-button  variant="outline-success">{{producto.cant}}</b-button>
-                            <b-button   variant="outline-primary"><b-icon icon="cart-plus"></b-icon></b-button>
-                       </b-button-group>
+                      <b-card-title> $ 7.00 </b-card-title>
+                      <b-card-text>
+                        <b-button-group class="d-flex roundered">
+                          <b-button variant="outline-danger"
+                            ><b-icon icon="cart-dash"></b-icon
+                          ></b-button>
+                          <b-button variant="outline-success">{{
+                            producto.cant
+                          }}</b-button>
+                          <b-button variant="outline-primary"
+                            ><b-icon icon="cart-plus"></b-icon
+                          ></b-button>
+                        </b-button-group>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -464,16 +500,23 @@
                       alt="Image"
                       class="rounded-0"
                       width="100%"
-                    ></img>
+                    />
                   </b-col>
                   <b-col col="6" sm="6" md="12">
                     <b-card-body title="$ 2.50" sub-title="Cerveza Corona">
                       <b-card-text>
-                       <b-button-group class="d-flex roundered">
-                          <b-button variant="none"><b-icon icon="dash-circle"></b-icon></b-button>
-                           <b-button pill variant="success">{{producto.cant}} <b-icon icon="cart-plus"></b-icon></b-button>
-                            <b-button   variant="none"><b-icon icon="plus-circle"></b-icon></b-button>
-                       </b-button-group>
+                        <b-button-group class="d-flex roundered">
+                          <b-button variant="none"
+                            ><b-icon icon="dash-circle"></b-icon
+                          ></b-button>
+                          <b-button pill variant="success"
+                            >{{ producto.cant }}
+                            <b-icon icon="cart-plus"></b-icon
+                          ></b-button>
+                          <b-button variant="none"
+                            ><b-icon icon="plus-circle"></b-icon
+                          ></b-button>
+                        </b-button-group>
                       </b-card-text>
                     </b-card-body>
                   </b-col>

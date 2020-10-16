@@ -73,7 +73,7 @@
             </b-form>
           </b-container>
         </b-col>
-        <b-col cols="12" md="6">  
+        <b-col cols="12" md="6">
           <h5 class="text-left ml-1"><b>FACTURA</b></h5>
           <b-table
             responsive
@@ -108,6 +108,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "Factura",
   data() {
@@ -151,11 +152,35 @@ export default {
     subtotal() {
       return this.$store.getters.getSubTotal;
     },
+    inputsValidos() {
+      var { nombre, apellido, telefono, email } = this.form;
+      if (nombre != "" && apellido != "" && telefono != "" && email != "") {
+        return true;
+      }
+      return false;
+    },
   },
   methods: {
     comprar(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      var productos = this.$store.getters.getProductInCart;
+      var form = this.form;
+      var msg = { form, productos };
+      if (this.inputsValidos) {
+        var baseURL =
+          location.protocol + "//" + location.hostname + ":" + location.port;
+        axios
+          .post(baseURL + "/send-pedido", msg)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        alert(JSON.stringify(this.form));
+      } else {
+        alert("Por favor, verifique los campos.");
+      }
     },
   },
 };
