@@ -172,10 +172,16 @@ export default {
         axios
           .post(baseURL + "/send-pedido", msg)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
+            if(res.data == "recibido"){
+              alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
+            }else{
+              alert("No pudimos recibir su pedido, intente mas tarde.");
+            }
           })
           .catch((err) => {
             console.log(err);
+            alert("Ocurrio un error, intente mas tarde.");
           });
         alert(JSON.stringify(this.form));
       } else {
