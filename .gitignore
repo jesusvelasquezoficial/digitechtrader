@@ -6,6 +6,9 @@ src/assets/basura
 # package
 package-lock.json
 
+# whatsapp
+session.json
+
 # local env files
 .env
 .env.local
