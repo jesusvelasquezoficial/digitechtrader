@@ -1,11 +1,14 @@
 .DS_Store
 node_modules
-#/dist
+# /dist
 src/assets/basura
 
+# package
+package-lock.json
+
 # local env files
-.env.local
 .env
+.env.local
 .env.*.local
 
 # Log files
