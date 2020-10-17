@@ -183,7 +183,6 @@ export default {
             console.log(err);
             alert("Ocurrio un error, intente mas tarde.");
           });
-        // alert(JSON.stringify(this.form));
       } else {
         alert("Por favor, verifique los campos.");
       }
