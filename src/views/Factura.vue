@@ -99,7 +99,7 @@
               </b-tr>
             </template>
           </b-table>
-          <b-button class="shadow-sm" block @click="comprar" variant="dark"
+          <b-button class="shadow-sm" :disabled="!blockBtn" block @click="comprar" variant="dark"
             >FINALIZAR COMPRA</b-button
           >
         </b-col>
@@ -113,6 +113,7 @@ export default {
   name: "Factura",
   data() {
     return {
+      btnComprarStatus: true,
       form: {
         nombre: "",
         apellido: "",
@@ -137,6 +138,9 @@ export default {
     };
   },
   computed: {
+    blockBtn(){
+      return this.btnComprarStatus;
+    },
     items() {
       var productos = this.$store.getters.getProductInCart;
       var items = [];
@@ -162,10 +166,12 @@ export default {
   },
   methods: {
     comprar(evt) {
+      this.btnComprarStatus = false;
       evt.preventDefault();
       var productos = this.$store.getters.getProductInCart;
+      var subtotal = this.$store.getters.getSubTotal;
       var form = this.form;
-      var msg = { form, productos };
+      var msg = { form, productos, subtotal};
       if (this.inputsValidos) {
         var baseURL =
           location.protocol + "//" + location.hostname + ":" + location.port;
@@ -174,6 +180,7 @@ export default {
           .then((res) => {
             // console.log(res);
             if(res.data == "recibido"){
+              this.cleanData();
               alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
             }else{
               alert("No pudimos recibir su pedido, intente mas tarde.");
@@ -187,6 +194,15 @@ export default {
         alert("Por favor, verifique los campos.");
       }
     },
+    cleanData(){
+      this.form = {
+        nombre: "",
+        apellido: "",
+        telefono: "",
+        email: "",
+      };
+      this.$store.commit("cleanCart");
+    }
   },
 };
 </script>

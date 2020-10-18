@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const qrcode = require("qrcode-terminal");
 const { Client } = require("whatsapp-web.js");
+const emoji = require("node-emoji");
 var nodemailer = require("nodemailer");
 require("dotenv").config();
 
@@ -19,11 +20,40 @@ app.use(express.static(path.join(__dirname, "/dist/")));
 // app.use(require("./routes/index"));
 
 app.post("/send-pedido", async(req, res) => {
-  console.log(req.body);
   try {
     const { nombre, apellido, telefono, email } = req.body.form;
-    const carrito = JSON.stringify(req.body.productos);
-    console.log(carrito);
+    const productos = req.body.productos;
+    const subtotal = req.body.subtotal;
+    let strProd = productos.map((producto) => {
+      return `<br> ${emoji.get('arrow_right')} ${producto.nombre} x ${
+        producto.cant
+      } $${producto.precio.toFixed(2)}`;
+    });
+    let strProdWS = productos.map((producto) => {
+      return `\n ${emoji.get('arrow_right')} ${producto.nombre} x ${
+        producto.cant
+      } $${producto.precio.toFixed(2)}`;
+    });
+
+    const mensajeCorreo = `
+      ${emoji.get('page_facing_up')} <b>DETALLES DE FACTURACION</b><br>
+      ${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}  <br>
+      ${emoji.get('telephone_receiver')} Telefono: ${telefono}  <br>
+      ${emoji.get('email')} Email: ${email}  <br>
+      <br>
+      ${emoji.get('page_with_curl')} <b>FACTURA</b> 
+      ${strProd} <br>
+      <br>
+      ${emoji.get('heavy_dollar_sign')} <b>TOTAL = $${subtotal.toFixed(2)}</b> 
+    `;
+
+    const mensajeWS = `${emoji.get('page_facing_up')} *DETALLES DE FACTURACION* \n${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}\n${emoji.get('telephone_receiver')} Telefono: ${telefono}\n${emoji.get('email')} Email: ${email}\n\n${emoji.get('page_with_curl')} *FACTURA* ${strProdWS}\n\n${emoji.get('heavy_dollar_sign')} *TOTAL = $${subtotal.toFixed(
+      2
+    )}*`;
+
+    console.log(mensajeCorreo);
+    console.log(mensajeWS);
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -36,30 +66,23 @@ app.post("/send-pedido", async(req, res) => {
       from: `${nombre} ${apellido} <${email}>`,
       to: [process.env.MAIL_USER, process.env.MAIL_USER2],
       subject: "Nuevo Pedido Phoenix Shop",
-      html: `Nombre: ${nombre} ${apellido} <br>
-            Telefono: ${telefono} <br>
-            Email: ${email} <br>
-            Carrito: <br>  - ${carrito}`,
+      html: mensajeCorreo,
       // html: `<h5>Design&Developer</h5>`
     };
 
     const info = await transporter.sendMail(mailOptions);
 
-    console.log(JSON.stringify(mailOptions));
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // console.log(JSON.stringify(mailOptions));
+    // console.log("Message sent: %s", info.messageId);
+    // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
     await client
-      .sendMessage(
-        "584123199657-1602835458@g.us",
-        `${JSON.stringify(mailOptions)}`
-      )
+      .sendMessage("584123199657-1602835458@g.us", mensajeWS)
       .then((req, res) => {
         console.log(res);
+        console.log("Mensaje Enviado");
       })
       .catch((err) => console.log(err));
-
-    console.log("Mensaje Enviado");
 
     res.send("recibido");
     // res.redirect("/");
@@ -98,6 +121,7 @@ let sessionData;
 
 // Use the saved values
 const client = new Client({
+  puppeteer: { args: ["--no-sandbox", "--disable-setuid-sandbox"] },
   session: sessionData,
 });
 

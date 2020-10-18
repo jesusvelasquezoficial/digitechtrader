@@ -221,6 +221,9 @@ export default new Vuex.Store({
     },
     delProductCart(state, id) {
       state.carrito.splice(id, 1);
+    },
+    cleanCart(state) {
+      state.carrito = [];
     }
   },
   actions: {},
