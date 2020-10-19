@@ -120,8 +120,7 @@
                           block
                           variant="dark"
                           class="mt-2"
-                          ><b-icon icon="cart-plus"></b-icon
-                        ></b-button>
+                          >Agregar al Carrito</b-button>
                       </b-card-text>
                     </b-card-body>
                   </b-col>
