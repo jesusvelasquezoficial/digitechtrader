@@ -175,6 +175,62 @@ export default new Vuex.Store({
         precio: 7.0,
         cant: 1,
       },
+      {
+        categoria: "celulares",
+        imagen: "25",
+        nombre: "Iphone X",
+        precio: 999.99,
+        cant: 1,
+      },
+      {
+        categoria: "celulares",
+        imagen: "26",
+        nombre: "Xiaomi A9 6GB/64RAM",
+        precio: 130.00,
+        cant: 1,
+      },
+      {
+        categoria: "mascotas",
+        imagen: "27",
+        nombre: "Perrarina Dog Chow",
+        precio: 27.00,
+        cant: 1,
+      },
+      {
+        categoria: "mascotas",
+        imagen: "28",
+        nombre: "Gatarina Mirringo",
+        precio: 25.00,
+        cant: 1,
+      },
+      {
+        categoria: "mascotas",
+        imagen: "29",
+        nombre: "Pelota para Perros",
+        precio: 5.00,
+        cant: 1,
+      },
+      {
+        categoria: "muebles",
+        imagen: "30",
+        nombre: "Mesa de Oficina",
+        precio: 250.00,
+        cant: 1,
+      },
+      {
+        categoria: "muebles",
+        imagen: "31",
+        nombre: "Mesa de Oficina L",
+        precio: 350.00,
+        cant: 1,
+      },
+      {
+        categoria: "muebles",
+        imagen: "32",
+        nombre: "Mesa de Comedor",
+        precio: 500.00,
+        cant: 1,
+      },
     ],
   },
   getters: {
@@ -200,11 +256,11 @@ export default new Vuex.Store({
   mutations: {
     restarCantProduct(state, id) {
       var producto = state.carrito[id];
-      producto.cant = producto.cant > 1 ? producto.cant - 1 : producto.cant;
+      producto.cant -= producto.cant > 1 ? 1 : 0;
     },
     sumarCantProduct: function(state, id) {
       var producto = state.carrito[id];
-      producto.cant = producto.cant < 100 ? producto.cant + 1 : producto.cant;
+      producto.cant += producto.cant < 100 ? 1 : 0;
     },
     addProductoAlCarrito(state, producto) {
       producto = JSON.parse(producto);

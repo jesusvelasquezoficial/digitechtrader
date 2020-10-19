@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "/dist/")));
 
 app.post("/send-pedido", async(req, res) => {
   try {
-    const { nombre, apellido, telefono, email } = req.body.form;
+    const { nombre, apellido, telefono, email, direccion, metodoPago } = req.body.form;
     const productos = req.body.productos;
     const subtotal = req.body.subtotal;
     let strProd = productos.map((producto) => {
@@ -40,6 +40,8 @@ app.post("/send-pedido", async(req, res) => {
       ${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}  <br>
       ${emoji.get('telephone_receiver')} Telefono: ${telefono}  <br>
       ${emoji.get('email')} Email: ${email}  <br>
+      ${emoji.get('round_pushpin')} Direccion: ${direccion}  <br>
+      ${emoji.get('credit_card')} Metodo de Pago: ${metodoPago}  <br>
       <br>
       ${emoji.get('page_with_curl')} <b>FACTURA</b> 
       ${strProd} <br>
@@ -47,7 +49,7 @@ app.post("/send-pedido", async(req, res) => {
       ${emoji.get('heavy_dollar_sign')} <b>TOTAL = $${subtotal.toFixed(2)}</b> 
     `;
 
-    const mensajeWS = `${emoji.get('page_facing_up')} *DETALLES DE FACTURACION* \n${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}\n${emoji.get('telephone_receiver')} Telefono: ${telefono}\n${emoji.get('email')} Email: ${email}\n\n${emoji.get('page_with_curl')} *FACTURA* ${strProdWS}\n\n${emoji.get('heavy_dollar_sign')} *TOTAL = $${subtotal.toFixed(
+    const mensajeWS = `${emoji.get('page_facing_up')} *DETALLES DE FACTURACION* \n${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}\n${emoji.get('telephone_receiver')} Telefono: ${telefono}\n${emoji.get('email')} Email: ${email}\n${emoji.get('round_pushpin')} Direccion: ${direccion}\n${emoji.get('credit_card')}  Metodo de Pago: ${metodoPago}\n\n${emoji.get('page_with_curl')} *FACTURA* ${strProdWS}\n\n${emoji.get('heavy_dollar_sign')} *TOTAL = $${subtotal.toFixed(
       2
     )}*`;
 
@@ -79,6 +81,7 @@ app.post("/send-pedido", async(req, res) => {
     await client
       .sendMessage("584123199657-1602835458@g.us", mensajeWS)
       .then((req, res) => {
+        console.log(req);
         console.log(res);
         console.log("Mensaje Enviado");
       })

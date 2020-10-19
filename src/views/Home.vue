@@ -93,7 +93,22 @@
             </router-link>
           </b-col>
           <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
-            <router-link to="/tienda/electrodomesticos" class="text-decoration-none"
+            <router-link to="/tienda/celulares" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/Icons/celulares.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">CELULARES</b-card-text></b-card
+              ></router-link
+            >
+          </b-col>
+          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
+            <router-link
+              to="/tienda/electrodomesticos"
+              class="text-decoration-none"
               ><b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Icons/electrodomesticos.png"
@@ -101,7 +116,9 @@
                   alt=""
                   width="32px"
                 />
-                <b-card-text class="mt-2">ELECTRODOMESTICOS</b-card-text></b-card
+                <b-card-text class="mt-2"
+                  >ELECTRODOMESTICOS</b-card-text
+                ></b-card
               ></router-link
             >
           </b-col>
@@ -115,6 +132,32 @@
                   width="32px"
                 />
                 <b-card-text class="mt-2">LICORES</b-card-text></b-card
+              ></router-link
+            >
+          </b-col>
+          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
+            <router-link to="/tienda/mascotas" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/Icons/mascotas.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">MASCOTAS</b-card-text></b-card
+              ></router-link
+            >
+          </b-col>
+          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
+            <router-link to="/tienda/muebles" class="text-decoration-none"
+              ><b-card class="card-categoria shadow-sm" text-variant="dark">
+                <img
+                  src="@/assets/Icons/muebles.png"
+                  fluid
+                  alt=""
+                  width="32px"
+                />
+                <b-card-text class="mt-2">MUEBLES</b-card-text></b-card
               ></router-link
             >
           </b-col>

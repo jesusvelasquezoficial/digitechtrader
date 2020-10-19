@@ -16,6 +16,7 @@
                     <b-form-input
                       id="input-1"
                       v-model="form.nombre"
+                      type="text"
                       required
                       placeholder="Nombre"
                     ></b-form-input>
@@ -30,13 +31,12 @@
                     <b-form-input
                       id="input-2"
                       v-model="form.apellido"
+                      type="text"
                       required
                       placeholder="Apellido"
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
-              </b-row>
-              <b-row>
                 <b-col lg="6">
                   <b-form-group
                     id="input-group-3"
@@ -69,6 +69,32 @@
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
+                <b-col lg="12">
+                  <b-form-group
+                    id="input-group-5"
+                    label="Direccion:"
+                    label-for="input-5"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-5"
+                      v-model="form.direccion"
+                      required
+                      placeholder="Direccion"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="12">
+                  <b-form-group label="Metodo de Pago:">
+                    <b-form-radio-group
+                      id="checkbox-group-1"
+                      v-model="form.metodoPago"
+                      :options="optionsPay"
+                      name="flavour-1"
+                      stacked
+                    ></b-form-radio-group>
+                  </b-form-group>
+                </b-col>
               </b-row>
             </b-form>
           </b-container>
@@ -99,7 +125,22 @@
               </b-tr>
             </template>
           </b-table>
-          <b-button class="shadow-sm" :disabled="!blockBtn" block @click="comprar" variant="dark"
+          <div class="text-left ml-1 mb-3">
+            <small
+              >Si su pedido es mayor o igual a 50$, el costo del delivery es
+              gratis.</small
+            ><br />
+            <small
+              >Si su pedido es menor a 50$ el costo del delivery dependerá de su
+              zona.</small
+            >
+          </div>
+          <b-button
+            class="shadow-sm"
+            :disabled="!blockBtn"
+            block
+            @click="comprar"
+            variant="dark"
             >FINALIZAR COMPRA</b-button
           >
         </b-col>
@@ -119,7 +160,17 @@ export default {
         apellido: "",
         telefono: "",
         email: "",
+        direccion: "",
+        metodoPago: "",
       },
+      optionsPay: [
+        { text: "Efectivo", value: "efectivo" },
+        { text: "Transf via Banesco", value: "banesco" },
+        { text: "Transf via Provincial", value: "provincial" },
+        { text: "Transf via Mercantil", value: "mercantil" },
+        { text: "Paypal", value: "paypal" },
+        { text: "Bitcoin", value: "btn" },
+      ],
       show: true,
       fields: [
         {
@@ -138,7 +189,7 @@ export default {
     };
   },
   computed: {
-    blockBtn(){
+    blockBtn() {
       return this.btnComprarStatus;
     },
     items() {
@@ -157,8 +208,22 @@ export default {
       return this.$store.getters.getSubTotal;
     },
     inputsValidos() {
-      var { nombre, apellido, telefono, email } = this.form;
-      if (nombre != "" && apellido != "" && telefono != "" && email != "") {
+      var {
+        nombre,
+        apellido,
+        telefono,
+        email,
+        direccion,
+        metodoPago,
+      } = this.form;
+      if (
+        nombre != "" &&
+        apellido != "" &&
+        telefono != "" &&
+        email != "" &&
+        direccion != "" &&
+        metodoPago != ""
+      ) {
         return true;
       }
       return false;
@@ -171,7 +236,7 @@ export default {
       var productos = this.$store.getters.getProductInCart;
       var subtotal = this.$store.getters.getSubTotal;
       var form = this.form;
-      var msg = { form, productos, subtotal};
+      var msg = { form, productos, subtotal };
       if (this.inputsValidos) {
         var baseURL =
           location.protocol + "//" + location.hostname + ":" + location.port;
@@ -179,30 +244,36 @@ export default {
           .post(baseURL + "/send-pedido", msg)
           .then((res) => {
             // console.log(res);
-            if(res.data == "recibido"){
+            if (res.data == "recibido") {
               this.cleanData();
               alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
-            }else{
+              this.btnComprarStatus = true;
+            } else {
               alert("No pudimos recibir su pedido, intente mas tarde.");
+              this.btnComprarStatus = true;
             }
           })
           .catch((err) => {
             console.log(err);
             alert("Ocurrio un error, intente mas tarde.");
+            this.btnComprarStatus = true;
           });
       } else {
-        alert("Por favor, verifique los campos.");
+        alert("Por favor, llene todos los detalles de facturacion.");
+        this.btnComprarStatus = true;
       }
     },
-    cleanData(){
+    cleanData() {
       this.form = {
         nombre: "",
         apellido: "",
         telefono: "",
         email: "",
+        direccion: "",
+        metodoPago: "",
       };
       this.$store.commit("cleanCart");
-    }
+    },
   },
 };
 </script>

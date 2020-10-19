@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="fondo">
+  <div id="app" class="bg-light">
     <b-navbar
       class="shadow-sm"
       toggleable="md"
@@ -95,7 +95,7 @@
               style="max-width: 100%"
               tag="article"
             >
-              <b-row class="text-left" no-gutters>
+              <b-row class="d-flex align-items-center text-left" no-gutters>
                 <b-col cols="5">
                   <img
                     :src="getImgProduct(producto.imagen)"
@@ -104,7 +104,7 @@
                     width="100%"
                   />
                 </b-col>
-                <b-col cols="6">
+                <b-col cols="7">
                   <b-card-body>
                     <b-card-sub-title class="mb-2">
                       {{ producto.nombre }}
@@ -113,29 +113,39 @@
                       $ {{ producto.precio.toFixed(2) }}
                     </b-card-title>
                     <b-card-text>
-                      <b-button-group class="d-flex roundered" size="sm">
-                        <b-button
-                          @click="restar(index)"
-                          variant="outline-danger"
-                          ><b-icon icon="cart-dash"></b-icon
-                        ></b-button>
-                        <b-button
-                          block
-                          class="w-100"
-                          variant="outline-success"
-                          disabled
-                          >{{ producto.cant }}</b-button
-                        >
-                        <b-button
-                          @click="sumar(index)"
-                          variant="outline-primary"
-                          ><b-icon icon="cart-plus"></b-icon
-                        ></b-button>
-                      </b-button-group>
+                      <b-input-group>
+                        <template v-slot:prepend>
+                          <b-button
+                            class="bg-light text-dark"
+                            @click="restar(index)"
+                            ><b-icon icon="cart-dash"></b-icon
+                          ></b-button>
+                        </template>
+                        <b-form-input
+                          type="number"
+                          class="pl-2 text-center border-secondary"
+                          v-model="producto.cant"
+                        ></b-form-input>
+                        <template v-slot:append>
+                          <b-button
+                            class="bg-light text-dark"
+                            @click="sumar(index)"
+                            ><b-icon icon="cart-plus"></b-icon
+                          ></b-button>
+                        </template>
+                      </b-input-group>
+                      <b-button
+                        @click="delProductCart(index)"
+                        block
+                        variant="outline-danger"
+                        class="btn-sm mt-2"
+                      >
+                        ELIMINAR
+                      </b-button>
                     </b-card-text>
                   </b-card-body>
                 </b-col>
-                <b-col class="p-2" cols="1">
+                <!-- <b-col class="p-2" cols="1">
                   <button
                     @click="delProductCart(index)"
                     type="button"
@@ -148,7 +158,7 @@
                       icon="x"
                     ></b-icon>
                   </button>
-                </b-col>
+                </b-col> -->
               </b-row>
             </b-card>
           </b-col>
@@ -175,6 +185,7 @@
       </template>
     </b-sidebar>
     <router-view />
+    <!-- FOOTER -->
     <div class="bg-white border">
       <b-container class="text-left font-small pt-4 mt-4">
         <b-row>
@@ -208,12 +219,27 @@
                 >
               </li>
               <li>
+                <router-link to="/tienda/celulares"
+                  >Celulares</router-link
+                >
+              </li>
+              <li>
                 <router-link to="/tienda/electrodomesticos"
                   >Electrodomesticos</router-link
                 >
               </li>
               <li>
                 <router-link to="/tienda/licores">Licores</router-link>
+              </li>
+              <li>
+                <router-link to="/tienda/mascotas"
+                  >Marcotas</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/tienda/muebles"
+                  >Muebles</router-link
+                >
               </li>
             </ul>
           </b-col>
