@@ -25,6 +25,11 @@
             </b-breadcrumb>
           </small>
         </b-col>
+        <b-col class="d-xs-block d-sm-none">
+          <b-dropdown block size="sm"  text="Categorias" class="mb-3" variant="outline-secondary"> 
+            <b-dropdown-item-button to="/tienda/alimentos">Alimentos</b-dropdown-item-button>
+          </b-dropdown>
+        </b-col>
         <b-col cols="12" sm="8" md="9">
           <b-input-group prepend="Buscar">
             <b-form-input
@@ -120,7 +125,8 @@
                           block
                           variant="dark"
                           class="mt-2"
-                          >Agregar al Carrito</b-button>
+                          >Agregar al Carrito</b-button
+                        >
                       </b-card-text>
                     </b-card-body>
                   </b-col>
@@ -161,7 +167,7 @@ export default {
   },
   methods: {
     getImgProduct(id) {
-      var images = require.context("@/assets/ProductosOpt/", true, /\.png$/);
+      var images = require.context("@/assets/ProductosPNG/", true, /\.png$/);
       return images("./" + id + ".png");
     },
     restarCantProduct(id) {

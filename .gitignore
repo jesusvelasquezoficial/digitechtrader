@@ -2,6 +2,9 @@
 node_modules
 # /dist
 src/assets/basura
+src/assets/ProductosBasura
+src/assets/ProductosOpt
+# src/assets/ProductosPNG
 
 # package
 package-lock.json
