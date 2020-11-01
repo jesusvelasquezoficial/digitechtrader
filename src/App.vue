@@ -9,45 +9,50 @@
     >
       <b-container>
         <b-navbar-brand class="d-flex align-items-center" to="/">
-          <img class="mb-1" src="@/assets/icono.png" alt="" width="32px" />
-          <b class="pl-1"> PHOENIX SHOP</b></b-navbar-brand
-        >
-
+          <img class="mb-1" src="@/assets/logo.png" alt="" width="132px" />
+          <b class="pl-1"></b>
+        </b-navbar-brand>
         <b-navbar-toggle
           target="nav-collapse"
           class="ml-auto"
         ></b-navbar-toggle>
-
         <b-collapse class="text-left" id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item class="ml-2 ml-md-0" to="/">
               <b-icon icon="house-door"></b-icon> INICIO
             </b-nav-item>
-            <b-nav-item class="ml-2 ml-md-0" to="/tienda">
+            <!-- <b-nav-item class="ml-2 ml-md-0" to="/tienda">
               <b-icon icon="shop"></b-icon> TIENDA
-            </b-nav-item>
+            </b-nav-item> -->
             <b-nav-item-dropdown class="ml-2 ml-md-0" right>
               <template v-slot:button-content>
-                <b-icon icon="person-circle"></b-icon> CUENTA
+                <b-icon icon="gear"></b-icon> SERVICIOS
               </template>
-              <b-dropdown-item href="#"
-                ><b-icon icon="box-arrow-in-right"></b-icon> INICIAR
-                SESION</b-dropdown-item
-              >
               <b-dropdown-item href="#">
-                <b-icon icon="box-arrow-in-left"></b-icon>
-                REGISTRARSE</b-dropdown-item
-              >
+                <b-icon icon="gem"></b-icon>
+                RECARGAS
+              </b-dropdown-item>
+              <b-dropdown-item href="#">
+                <b-icon icon="credit-card-2-front"></b-icon>
+                REMESAS
+              </b-dropdown-item>
+              <b-dropdown-item href="#">
+                <b-icon icon="journals"></b-icon>
+                CURSOS ONLINE
+              </b-dropdown-item><b-dropdown-item href="#">
+                <b-icon icon="camera-reels"></b-icon>
+                STREAMIING
+              </b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>
-        <b-navbar-nav>
+        <!-- <b-navbar-nav>
           <b-nav-item v-b-toggle.sidebar-backdrop class="ml-2 ml-md-0">
             <b-icon icon="cart2"></b-icon>
             <b-badge pill variant="secondary">{{ cantItemsInCart }}</b-badge>
           </b-nav-item>
-        </b-navbar-nav>
+        </b-navbar-nav> -->
       </b-container>
     </b-navbar>
     <b-sidebar
@@ -194,52 +199,25 @@
               Informacion
             </h5>
             <p>
-              Somos una tienda online de ventas de productos que ayuda al pueblo
-              venezolano a realizar compras desde la comodidad de su hogar con
-              entregas a domiciolio.
+              Somos una empresa dedicada al servicio de compra, venta e
+              intercambio de remesas y recargas de videojuegos.
             </p>
           </b-col>
           <hr class="clearfix w-100 d-md-none" />
           <b-col md="6" lg="3">
-            <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
-              Categorias
-            </h5>
+            <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Servicios</h5>
             <ul class="list-unstyled">
               <li>
-                <router-link to="/tienda/alimentos">Alimentos</router-link>
+                <router-link to="/tienda/recargas">Recargas</router-link>
               </li>
               <li>
-                <router-link to="/tienda/aseo-personal"
-                  >Aseo Personal</router-link
-                >
+                <router-link to="/tienda/remesas">Remesas</router-link>
               </li>
               <li>
-                <router-link to="/tienda/aseo-del-hogar"
-                  >Aseo del Hogar</router-link
-                >
+                <router-link to="/tienda/cursos-online ">Cursos Online </router-link>
               </li>
               <li>
-                <router-link to="/tienda/celulares"
-                  >Celulares</router-link
-                >
-              </li>
-              <li>
-                <router-link to="/tienda/electrodomesticos"
-                  >Electrodomesticos</router-link
-                >
-              </li>
-              <li>
-                <router-link to="/tienda/licores">Licores</router-link>
-              </li>
-              <li>
-                <router-link to="/tienda/mascotas"
-                  >Marcotas</router-link
-                >
-              </li>
-              <li>
-                <router-link to="/tienda/muebles"
-                  >Muebles</router-link
-                >
+                <router-link to="/tienda/streaming">Streaming</router-link>
               </li>
             </ul>
           </b-col>
@@ -288,8 +266,8 @@
         </ul>
       </div>
       <div class="text-center mb-5">
-        &copy; 2020 Copyright
-        <a href="https://phoenixshop.herokuapp.com"> www.phoenixshop.com </a>
+        &copy; 2020 Copyright <br />
+        <a href="https://www.digitechtrader.com"> www.digitechtrader.com </a>
       </div>
     </div>
   </div>
@@ -313,8 +291,8 @@ export default {
   },
   methods: {
     getImgProduct(id) {
-      var images = require.context("@/assets/ProductosPNG/", true, /\.png$/);
-      return images("./" + id + ".png");
+      // var images = require.context("@/assets/ProductosPNG/", true, /\.png$/);
+      // return images("./" + id + ".png");
     },
     delProductCart(id) {
       this.$store.commit("delProductCart", id);

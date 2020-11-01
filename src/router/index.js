@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Shop from "../views/Shop.vue";
 import Factura from "../views/Factura.vue";
-import Shop2 from "../views/Shop2.vue";
 
 Vue.use(VueRouter);
 
@@ -29,11 +28,6 @@ const routes = [{
     path: "/factura",
     name: "factura",
     component: Factura
-  },
-  {
-    path: "/shop2",
-    name: "shop2",
-    component: Shop2
   }
 ];
 

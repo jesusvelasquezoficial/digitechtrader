@@ -27,7 +27,16 @@
         </b-col>
         <b-col class="d-xs-block d-sm-none">
           <b-dropdown block size="sm"  text="Categorias" class="mb-3" variant="outline-secondary"> 
-            <b-dropdown-item-button to="/tienda/alimentos">Alimentos</b-dropdown-item-button>
+            <b-dropdown-item to="/tienda/alimentos">Alimentos</b-dropdown-item>
+            <b-dropdown-item to="/tienda/aseo-personal">Aseo Personal</b-dropdown-item>
+            <b-dropdown-item to="/tienda/aseo-del-hogar">Aseo del Hogar</b-dropdown-item>
+            <b-dropdown-item to="/tienda/celulares">Celulares</b-dropdown-item>
+            <b-dropdown-item to="/tienda/electrodomesticos"
+              >Electrodomesticos</b-dropdown-item
+            >
+            <b-dropdown-item to="/tienda/licores">Licores</b-dropdown-item>
+            <b-dropdown-item to="/tienda/mascotas">Mascotas</b-dropdown-item>
+            <b-dropdown-item to="/tienda/muebles">Muebles</b-dropdown-item>
           </b-dropdown>
         </b-col>
         <b-col cols="12" sm="8" md="9">
@@ -167,8 +176,8 @@ export default {
   },
   methods: {
     getImgProduct(id) {
-      var images = require.context("@/assets/ProductosPNG/", true, /\.png$/);
-      return images("./" + id + ".png");
+      // var images = require.context("@/assets/ProductosPNG/", true, /\.png$/);
+      // return images("./" + id + ".png");
     },
     restarCantProduct(id) {
       var producto = this.productos[id];
