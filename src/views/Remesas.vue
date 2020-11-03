@@ -151,7 +151,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Factura",
+  name: "Remesas",
   data() {
     return {
       btnComprarStatus: true,

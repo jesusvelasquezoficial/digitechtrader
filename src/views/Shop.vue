@@ -74,7 +74,7 @@
             <!-- Sin Productos -->
             <b-col class="my-5 text-center" v-if="productos == ''">
               <h5>
-                El producto <b>"{{ buscar }}"</b> no esta en inventario
+                El servicio <b>"{{ buscar }}"</b> no esta en inventario
               </h5>
             </b-col>
             <!-- Con Productos -->
@@ -142,24 +142,6 @@
                 </b-row>
               </b-card>
             </b-col>
-          </b-row>
-        </b-col>
-        <b-col class="offset-sm-4 offset-md-3" sm="8" md="9" lg="9">
-          <b-row class="mb-3">
-            <b-col cols="6"
-              ><b-button to="/" class="shadow-sm" block variant="dark"
-                >IR A CATEGORIAS</b-button
-              ></b-col
-            >
-            <b-col cols="6"
-              ><b-button
-                v-b-toggle.sidebar-backdrop
-                class="shadow-sm"
-                block
-                variant="success"
-                >REALIZAR PEDIDO</b-button
-              ></b-col
-            >
           </b-row>
         </b-col>
       </b-row>

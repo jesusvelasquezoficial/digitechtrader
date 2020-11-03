@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Shop from "../views/Shop.vue";
-import Factura from "../views/Factura.vue";
+import Recargas from "../views/Recargas.vue";
+import Freefire from "../views/Freefire.vue";
+import Remesas from "../views/Remesas.vue";
 
 Vue.use(VueRouter);
 
@@ -12,29 +13,29 @@ const routes = [{
     component: Home,
   },
   {
-    path: "/tienda",
-    name: "tienda",
-    component: Shop,
-    children: [
-      { path: "/tienda/:categoria", component: Shop },
-    ],
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () =>
-    //   import ( /* webpackChunkName: "about" */ '../views/Shop.vue')
+    path: "/recargas",
+    name: "recargas",
+    component: Recargas,
   },
   {
-    path: "/factura",
-    name: "factura",
-    component: Factura
-  }
+    path: "/remesas",
+    name: "remesas",
+    component: Remesas,
+  },
+  {
+    path: "/recargas/free-fire",
+    name: "/recargasfreefire",
+    component: Freefire,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView();
+  }
 });
 
 export default router;

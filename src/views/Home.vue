@@ -49,7 +49,7 @@
       <div class="mt-3">
         <b-row id="categorias" cols="2">
           <b-col cols="12" sm="6" md="4" lg="6" class="mb-3">
-            <router-link to="/tienda/recargas" class="text-decoration-none">
+            <router-link to="/recargas" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Icons/recargas.png"
@@ -57,12 +57,12 @@
                   alt=""
                   width="32px"
                 />
-                <b-card-text class="mt-2">RECARGAS</b-card-text>
+                <b-card-text class="mt-2"><h4>RECARGAS</h4></b-card-text>
               </b-card>
             </router-link>
           </b-col>
           <b-col cols="12" sm="6" md="4" lg="6" class="mb-3">
-            <router-link to="/tienda/remesas" class="text-decoration-none">
+            <router-link to="/remesas" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Icons/remesas.png"
@@ -70,7 +70,7 @@
                   alt=""
                   width="32px"
                 />
-                <b-card-text class="mt-2">REMESAS</b-card-text>
+                <b-card-text class="mt-2"><h4>REMESAS</h4></b-card-text>
               </b-card>
             </router-link>
           </b-col>
@@ -79,11 +79,9 @@
     </b-container>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: "Home",
   data() {
