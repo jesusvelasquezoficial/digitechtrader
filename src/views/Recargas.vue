@@ -46,7 +46,7 @@
       </b-carousel>
       <div class="mt-3">
         <b-row id="categorias" cols="2">
-          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
+          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3" >
             <router-link to="/recargas/free-fire" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
@@ -113,6 +113,8 @@ export default {
   name: "Recargas",
   data() {
     return {
+      precioDolar: 560,
+      slide: 0,
       btnComprarStatus: true,
       form: {
         nombre: "",
@@ -155,13 +157,13 @@ export default {
       return this.btnComprarStatus;
     },
     items() {
-      var productos = this.$store.getters.getProductInCart;
+      var recargas = this.$store.getters.getRecargas;
       var items = [];
-      productos.forEach((producto) => {
+      recargas.forEach((recarga) => {
         items.push({
-          nombre: producto.nombre,
-          cant: producto.cant,
-          subtotal: (producto.precio * producto.cant).toFixed(2),
+          nombre: recarga.nombre,
+          cant: recarga.cant,
+          subtotal: (recarga.precio * this.precioDolar).toFixed(2),
         });
       });
       return items;
@@ -192,6 +194,15 @@ export default {
     },
   },
   methods: {
+    getUrlImg(img){
+      return '@/assets/recargas/'+img;
+    },
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
+    },
     comprar(evt) {
       this.btnComprarStatus = false;
       evt.preventDefault();

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     productos: [],
     recargas: [{
         nombre: "Free Fire",
-        img: "free-fire.png",
+        img: "freefire.png",
         tipos: [{
             cant: 100,
             bonus: 10,
@@ -79,7 +79,7 @@ export default new Vuex.Store({
       },
       {
         nombre: "Calll of Duty",
-        img: "call-of-duty.jpg",
+        img: "callofduty.jpg",
         tipos: [{
             cant: 80,
             bonus: 0,
@@ -156,8 +156,8 @@ export default new Vuex.Store({
     getProductInCart: (state) => {
       return state.carrito;
     },
-    getProduct: (state) => {
-      return state.productos;
+    getRecargas: (state) => {
+      return state.recargas;
     },
     getSubTotal(state) {
       var precioProducto = 0;
