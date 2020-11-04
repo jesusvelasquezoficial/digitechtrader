@@ -275,7 +275,7 @@ export default {
         this.btnComprarStatus = true;
       }
     },
-    cleanData() {
+    cleanData() { 
       this.form = {
         nombre: "",
         apellido: "",
