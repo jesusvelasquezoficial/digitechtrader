@@ -156,8 +156,8 @@ export default new Vuex.Store({
     getProductInCart: (state) => {
       return state.carrito;
     },
-    getRecargas: (state) => {
-      return state.recargas;
+    getFreefire: (state) => {
+      return state.recargas[0];
     },
     getSubTotal(state) {
       var precioProducto = 0;

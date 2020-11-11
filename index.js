@@ -21,38 +21,52 @@ app.use(express.static(path.join(__dirname, "/dist/")));
 
 app.post("/send-pedido", async(req, res) => {
   try {
-    const { nombre, apellido, telefono, email, direccion, metodoPago } = req.body.form;
-    const productos = req.body.productos;
-    const subtotal = req.body.subtotal;
-    let strProd = productos.map((producto) => {
-      return `<br> ${emoji.get('arrow_right')} ${producto.nombre} x ${
-        producto.cant
-      } $${producto.precio.toFixed(2)}`;
-    });
-    let strProdWS = productos.map((producto) => {
-      return `\n ${emoji.get('arrow_right')} ${producto.nombre} x ${
-        producto.cant
-      } $${producto.precio.toFixed(2)}`;
-    });
+    const {
+      nombre,
+      apellido,
+      telefono,
+      email,
+      idUser,
+      metodoPago,
+    } = req.body.form;
+    const nombre_recarga = req.body.nombre_recarga;
+    const tipo_recarga = req.body.tipo_recarga;
+    // let strProd = `<br> ${emoji.get('arrow_right')} ${tipo_recarga} `;
+    // let strProdWS = `\n ${emoji.get('arrow_right')} ${tipo_recarga} `;
+    let strProd = `<br> Juego: ${nombre_recarga}<br> Cantidad: ${tipo_recarga.cant}<br> Bonus: ${tipo_recarga.bonus}<br> Precio: ${tipo_recarga.precio}$`;
+    let strProdWS = `\n Juego: ${nombre_recarga}\n Cantidad: ${tipo_recarga.cant}\n Bonus: ${tipo_recarga.bonus}\n Precio: ${tipo_recarga.precio}$`;
 
     const mensajeCorreo = `
-      ${emoji.get('page_facing_up')} <b>DETALLES DE FACTURACION</b><br>
-      ${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}  <br>
-      ${emoji.get('telephone_receiver')} Telefono: ${telefono}  <br>
-      ${emoji.get('email')} Email: ${email}  <br>
-      ${emoji.get('round_pushpin')} Direccion: ${direccion}  <br>
-      ${emoji.get('credit_card')} Metodo de Pago: ${metodoPago}  <br>
+      ${emoji.get("page_facing_up")} <b>DETALLES DEL CLIENTE</b><br>
+      ${emoji.get("large_blue_circle")} Nombre: ${nombre} ${apellido}  <br>
+      ${emoji.get("telephone_receiver")} Telefono: ${telefono}  <br>
+      ${emoji.get("email")} Email: ${email}  <br>
+      ${emoji.get("round_pushpin")} ID de Jugador: ${idUser}  <br>
+      ${emoji.get("credit_card")} Metodo de Pago: ${metodoPago}  <br>
       <br>
-      ${emoji.get('page_with_curl')} <b>FACTURA</b> 
+      ${emoji.get("page_with_curl")} <b>RECARGA</b> 
       ${strProd} <br>
-      <br>
-      ${emoji.get('heavy_dollar_sign')} <b>TOTAL = $${subtotal.toFixed(2)}</b> 
     `;
-
-    const mensajeWS = `${emoji.get('page_facing_up')} *DETALLES DE FACTURACION* \n${emoji.get('large_blue_circle')} Nombre: ${nombre} ${apellido}\n${emoji.get('telephone_receiver')} Telefono: ${telefono}\n${emoji.get('email')} Email: ${email}\n${emoji.get('round_pushpin')} Direccion: ${direccion}\n${emoji.get('credit_card')}  Metodo de Pago: ${metodoPago}\n\n${emoji.get('page_with_curl')} *FACTURA* ${strProdWS}\n\n${emoji.get('heavy_dollar_sign')} *TOTAL = $${subtotal.toFixed(
-      2
-    )}*`;
-
+    // <br>
+    // ${emoji.get("heavy_dollar_sign")} <b>TOTAL = $0.00</b> 
+    const mensajeWS = `${emoji.get(
+      "page_facing_up"
+    )} *DETALLES DEL CLIENTE* \n${emoji.get(
+      "large_blue_circle"
+    )} Nombre: ${nombre} ${apellido}\n${emoji.get(
+      "telephone_receiver"
+    )} Telefono: ${telefono}\n${emoji.get(
+      "email"
+    )} Email: ${email}\n${emoji.get(
+      "round_pushpin"
+    )} ID de Jugador: ${idUser}\n${emoji.get(
+      "credit_card"
+    )}  Metodo de Pago: ${metodoPago}\n\n${emoji.get(
+      "page_with_curl"
+    )} *RECARGA* ${strProdWS}\n`;
+    // \n${emoji.get(
+    //   "heavy_dollar_sign"
+    // )} *TOTAL = $0.00*
     console.log(mensajeCorreo);
     console.log(mensajeWS);
 
@@ -67,7 +81,7 @@ app.post("/send-pedido", async(req, res) => {
     var mailOptions = {
       from: `${nombre} ${apellido} <${email}>`,
       to: [process.env.MAIL_USER, process.env.MAIL_USER2],
-      subject: "Nuevo Pedido Phoenix Shop",
+      subject: "Nuevo Pedido Digitech Recargas",
       html: mensajeCorreo,
       // html: `<h5>Design&Developer</h5>`
     };
@@ -79,7 +93,7 @@ app.post("/send-pedido", async(req, res) => {
     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
     await client
-      .sendMessage("584123199657-1602835458@g.us", mensajeWS)
+      .sendMessage("584123199657-1603728824@g.us", mensajeWS)
       .then((req, res) => {
         console.log(req);
         console.log(res);
@@ -98,7 +112,7 @@ app.post("/send-pedido", async(req, res) => {
 app.get("/sendMensajeGroup", async(req, res) => {
   await client
     .sendMessage(
-      "584123199657-1602835458@g.us",
+      "584123199657-1603728824@g.us",
       "mensaje enviado desde el servidor para el grupo."
     )
     .then((req, res) => {

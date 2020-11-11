@@ -1,11 +1,11 @@
 <template>
-  <div class="freefire">
+  <div class="lol">
     <b-container class="my-4">
       <b-row>
         <b-col cols="12" md="3" lg="2" class="text-left mb-4">
           <div class="p-2">
             <img
-              src="@/assets/recargas/freefire.png"
+              src="@/assets/recargas/lol.png"
               fluid
               alt=""
               width="120px"
@@ -123,7 +123,7 @@
                 :key="index"
               >
                 <b-form-radio :value="item">
-                  💎 {{ item.cant }} <b>+</b> Bonus {{ item.bonus }} <b> x </b>
+                  💰 {{ item.cant }} <b>+</b> Bonus {{ item.bonus }} <b> x </b>
                   {{ item.precio.toFixed(2) }}$
                 </b-form-radio>
               </b-list-group-item>
@@ -156,7 +156,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Freefire",
+  name: "Leagueoflegends",
   data() {
     return {
       btnComprarStatus: true,
@@ -193,38 +193,38 @@ export default {
         },
       ],
       recarga: {
-        nombre: "Free Fire",
-        img: "freefire.png",
+        nombre: "League of Legends",
+        img: "lol.png",
         tipos: [
           {
-            cant: 100,
-            bonus: 10,
-            precio: 1.0,
+            cant: 710,
+            bonus: 0,
+            precio: 6.19,
           },
           {
-            cant: 310,
-            bonus: 31,
-            precio: 3.0,
+            cant: 1500,
+            bonus: 0,
+            precio: 12.29,
           },
           {
-            cant: 520,
-            bonus: 52,
-            precio: 5.0,
+            cant: 2310,
+            bonus: 0,
+            precio: 18.39,
           },
           {
-            cant: 1060,
-            bonus: 106,
-            precio: 10.0,
+            cant: 4070,
+            bonus: 0,
+            precio: 30.59,
           },
           {
-            cant: 2180,
-            bonus: 218,
-            precio: 20.0,
+            cant: 8470,
+            bonus: 0,
+            precio: 61.09,
           },
           {
-            cant: 5600,
-            bonus: 560,
-            precio: 50.0,
+            cant: 13815,
+            bonus: 0,
+            precio: 95.99,
           },
         ],
       },
