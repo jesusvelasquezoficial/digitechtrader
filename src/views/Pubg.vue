@@ -5,7 +5,7 @@
         <b-col cols="12" md="3" lg="2" class="text-left mb-4">
           <div class="p-2">
             <img
-              src="@/assets/recargas/pubg.png"
+              src="@/assets/Recargas/pubg.png"
               fluid
               alt=""
               width="120px"

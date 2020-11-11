@@ -20,7 +20,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/1.png"
+              src="@/assets/Slider/1.png"
               alt="image slot"
             /> </template
         ></b-carousel-slide>
@@ -29,7 +29,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/2.png"
+              src="@/assets/Slider/2.png"
               alt="image slot"
             />
           </template>
@@ -39,7 +39,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/3.png"
+              src="@/assets/Slider/3.png"
               alt="image slot"
             />
           </template>

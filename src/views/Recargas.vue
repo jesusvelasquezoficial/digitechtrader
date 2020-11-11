@@ -19,7 +19,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/1.png"
+              src="@/assets/Slider/1.png"
               alt="image slot"
             /> </template
         ></b-carousel-slide>
@@ -28,7 +28,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/2.png"
+              src="@/assets/Slider/2.png"
               alt="image slot"
             />
           </template>
@@ -38,7 +38,7 @@
           <template v-slot:img>
             <img
               class="d-block img-fluid w-100"
-              src="@/assets/slider/3.png"
+              src="@/assets/Slider/3.png"
               alt="image slot"
             />
           </template>
@@ -50,7 +50,7 @@
             <router-link to="/recargas/free-fire" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
-                  src="@/assets/recargas/freefire.png"
+                  src="@/assets/Recargas/freefire.png"
                   fluid
                   alt=""
                   width="120px"
@@ -64,7 +64,7 @@
             <router-link to="/recargas/pubg-mobile" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
-                  src="@/assets/recargas/pubg.png"
+                  src="@/assets/Recargas/pubg.png"
                   fluid
                   alt=""
                   width="120px"
@@ -78,7 +78,7 @@
             <router-link to="/recargas/call-of-duty" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
-                  src="@/assets/recargas/callofduty.jpg"
+                  src="@/assets/Recargas/callofduty.jpg"
                   fluid
                   alt=""
                   width="120px"
@@ -92,7 +92,7 @@
             <router-link to="/recargas/league-of-legends" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
-                  src="@/assets/recargas/lol.png"
+                  src="@/assets/Recargas/lol.png"
                   fluid
                   alt=""
                   width="120px"
@@ -195,7 +195,7 @@ export default {
   },
   methods: {
     getUrlImg(img){
-      return '@/assets/recargas/'+img;
+      return '@/assets/Recargas/'+img;
     },
     onSlideStart(slide) {
       this.sliding = true;
