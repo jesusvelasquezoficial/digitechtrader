@@ -129,16 +129,14 @@
               </b-list-group-item>
             </b-form-radio-group>
           </b-form-group>
-          <!-- <div class="text-left ml-1 mb-3">
+          <div class="text-left ml-1 mb-3">
             <small
-              >Si su pedido es mayor o igual a 50$, el costo del delivery es
-              gratis.</small
+              ><b>Tarjeta Semanal:</b> Reclama <b>60</b> diamantes en juego cada dia durante <b>7 dias</b> ¡Recibiras <b>420</b> diamantes en total!</small
             ><br />
             <small
-              >Si su pedido es menor a 50$ el costo del delivery dependerá de su
-              zona.</small
+              ><b>Tarjeta Mensual:</b> Recibe <b>100</b> diamantes instantaneamente, y reclama <b>60</b> diamantes en juego cada dia durante <b>30 dias</b> ¡Recibiras <b>1.900</b> diamantes en total!</small
             >
-          </div> -->
+          </div>
           <b-button
             class="shadow-sm"
             :disabled="!blockBtn"
@@ -225,6 +223,16 @@ export default {
             cant: 5600,
             bonus: 560,
             precio: 50.0,
+          },
+          {
+            cant: 'Tarjeta Semanal',
+            bonus: 0,
+            precio: 2.00,
+          },
+          {
+            cant: 'Tarjeta Mensual',
+            bonus: 0,
+            precio: 8.00,
           },
         ],
       },
