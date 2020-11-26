@@ -106,6 +106,27 @@
                     ></b-form-radio-group>
                   </b-form-group>
                 </b-col>
+                <b-col lg="12">
+                  <div
+                    class="mb-3"
+                    v-html="infoMetodoPago(form.metodoPago)"
+                  ></div>
+                </b-col>
+                <b-col lg="12">
+                  <b-form-group
+                    id="input-group-6"
+                    label="Nro de Referencia:"
+                    label-for="input-6"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-6"
+                      v-model="form.nroReferencia"
+                      required
+                      placeholder="Nro de Referencia"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
               </b-row>
             </b-form>
           </b-container>
@@ -128,6 +149,16 @@
                 </b-form-radio>
               </b-list-group-item>
             </b-form-radio-group>
+            <b-list-group-item class="flex-column align-items-center">
+            <div
+              class="d-flex w-100 justify-content-between align-items-center"
+            >
+              <h3 class="mb-1"><b>Total:</b></h3>
+              <h4>
+                <b>{{ tolal() }} Bs</b>
+              </h4>
+            </div>
+          </b-list-group-item>
           </b-form-group>
           <!-- <div class="text-left ml-1 mb-3">
             <small
@@ -168,15 +199,16 @@ export default {
         email: "",
         idUser: "",
         metodoPago: "",
+        nroReferencia: "",
       },
       optionsPay: [
         { text: "Banesco", value: "Banesco" },
-        { text: "Pago Movil", value: "Pago Movil" },
-        { text: "Provincial", value: "Provincial" },
         { text: "Venezuela", value: "Venezuela" },
-        { text: "Bank of America", value: "Bank of America" },
-        { text: "Banesco Panama", value: "Banesco Panama" },
-        { text: "Bitcoin", value: "Bitcoin" },
+        { text: "Pago Movil", value: "Pago Movil" },
+        // { text: "Provincial", value: "Provincial" },
+        // { text: "Bank of America", value: "Bank of America" },
+        // { text: "Banesco Panama", value: "Banesco Panama" },
+        // { text: "Bitcoin", value: "Bitcoin" },
       ],
       fields: [
         {
@@ -231,6 +263,9 @@ export default {
     };
   },
   computed: {
+    tasaDolar(){
+      return this.$store.getters.getTasaDolar;
+    },
     blockBtn() {
       return this.btnComprarStatus;
     },
@@ -270,6 +305,25 @@ export default {
     },
   },
   methods: {
+    tolal() {
+      var tasa = this.tasaDolar;
+      var precio_recarga = this.selected.precio;
+      if (precio_recarga != undefined) {
+        return (parseFloat(precio_recarga) * tasa).toLocaleString("es-VE");
+      }
+      return 0;
+    },
+    infoMetodoPago(metodo) {
+      if (metodo == "Banesco") {
+        return "Nro Cuenta: <strong>01340946370001523975</strong> </br> Titular: <strong>Floravid davila</strong> </br> Rif: <strong>10.010.207</strong>";
+      } else if (metodo == "Venezuela") {
+        return "Nro Cuenta: <strong>01020501880002001191</strong> </br> Titular: <strong>Francisco Davila</strong> </br> Rif: <strong>3.807.253</strong>";
+      } else if (metodo == "Pago Movil") {
+        return "Cuenta: <strong>Venezuela</strong> </br> Nro Tlf: <strong>04141635338</strong> </br> C.I: <strong>3.807.253</strong>";
+      } else {
+        return "";
+      }
+    },
     comprar(evt) {
       this.btnComprarStatus = false;
       evt.preventDefault();
@@ -278,7 +332,8 @@ export default {
       var form = this.form;
       var nombre_recarga = this.recarga.nombre;
       var tipo_recarga = this.selected;
-      var pedido = { form, nombre_recarga, tipo_recarga };
+      var precioBS = this.tolal();
+      var pedido = { form, nombre_recarga, tipo_recarga, precioBS };
       if (this.inputsValidos) {
         var baseURL =
           location.protocol + "//" + location.hostname + ":" + location.port;

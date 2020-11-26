@@ -1,18 +1,7 @@
 <template>
-  <div class="pubg">
+  <div class="freefire">
     <b-container class="my-4">
       <b-row>
-        <b-col cols="12" md="3" lg="2" class="text-left mb-4">
-          <div class="p-2">
-            <img
-              src="@/assets/Recargas/pubg.png"
-              fluid
-              alt=""
-              width="120px"
-              class="rounded"
-            />
-          </div>
-        </b-col>
         <b-col class="text-left mb-3" cols="12" md="5" lg="5">
           <h5 class="text-left ml-1"><b>INFORMACION DEL CLIENTE</b></h5>
           <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
@@ -83,83 +72,122 @@
                 <b-col lg="12">
                   <b-form-group
                     id="input-group-5"
-                    label="ID del Jugador:"
+                    label="Cuenta Origen:"
                     label-for="input-5"
                     description=""
                   >
                     <b-form-input
                       id="input-5"
-                      v-model="form.idUser"
+                      v-model="form.cuentaOrigin"
                       required
-                      placeholder="ID del Jugador"
+                      placeholder="Micuentapaypal@ejemplo.com"
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
                 <b-col lg="12">
-                  <b-form-group label="Metodo de Pago:">
-                    <b-form-radio-group
-                      id="checkbox-group-1"
-                      v-model="form.metodoPago"
-                      :options="optionsPay"
-                      name="flavour-1"
-                      stacked
-                    ></b-form-radio-group>
-                  </b-form-group>
-                </b-col>
-                <b-col lg="12">
-                  <div
-                    class="mb-3"
-                    v-html="infoMetodoPago(form.metodoPago)"
-                  ></div>
-                </b-col>
-                <b-col lg="12">
-                  <b-form-group
-                    id="input-group-6"
-                    label="Nro de Referencia:"
-                    label-for="input-6"
-                    description=""
-                  >
-                    <b-form-input
-                      id="input-6"
-                      v-model="form.nroReferencia"
-                      required
-                      placeholder="Nro de Referencia"
-                    ></b-form-input>
-                  </b-form-group>
-                </b-col>
+                <b-form-group
+                  id="input-group-5"
+                  label="Cuenta Destino:"
+                  label-for="input-5"
+                  description=""
+                >
+                  <b-form-input
+                    id="input-5"
+                    v-model="form.cuentaDestino"
+                    required
+                    placeholder="Nro de cuenta 0134-0000-0000-0000-0000"
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
               </b-row>
             </b-form>
           </b-container>
         </b-col>
-        <b-col class="text-left mb-3" cols="12" md="4" lg="5">
-          <h5 class="text-left ml-1"><b>RECARGA</b></h5>
-          <b-form-group>
-            <b-form-radio-group
-              id="radio-group-monedas"
-              v-model="selected"
-              name="radio-sub-component"
-            >
-              <b-list-group-item
-                v-for="(item, index) in recarga.tipos"
-                :key="index"
-              >
-                <b-form-radio :value="item">
-                  💰 {{ item.cant }} <b>+</b> Bonus {{ item.bonus }} <b> x </b>
-                  {{ item.precio.toFixed(2) }}$
-                </b-form-radio>
-              </b-list-group-item>
-            </b-form-radio-group>
-            <b-list-group-item class="flex-column align-items-center">
-            <div
-              class="d-flex w-100 justify-content-between align-items-center"
-            >
-              <h3 class="mb-1"><b>Total:</b></h3>
-              <h4>
-                <b>{{ tolal() }} Bs</b>
-              </h4>
-            </div>
-          </b-list-group-item>
-          </b-form-group>
+        <b-col class="text-left mb-3" cols="12" md="5" lg="5">
+          <h5 class="text-left ml-1"><b>IMPORTANTE</b></h5>
+          <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
+            <b-row>
+              <b-col lg="12">
+                <b-form-group
+                  id="input-group-6"
+                  label="Tipo de Cuenta:"
+                  label-for="input-6"
+                  description=""
+                >
+                  <b-form-select v-model="form.tipoCuentaDestino" class="">
+                    <b-form-select-option :value="null"
+                      >Tipo de Cuenta</b-form-select-option
+                    >
+                    <b-form-select-option value="Ahorro"
+                      >Ahorro</b-form-select-option
+                    >
+                    <b-form-select-option value="Corriente"
+                      >Corriente</b-form-select-option
+                    >
+                  </b-form-select>
+                </b-form-group>
+              </b-col>
+              <b-col lg="12">
+                <b-form-group
+                  id="input-group-7"
+                  label="Nombre de Titular:"
+                  label-for="input-7"
+                  description=""
+                >
+                  <b-form-input
+                    id="input-7"
+                    v-model="form.nombreTitular"
+                    required
+                    placeholder="Nombre de Titular"
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col lg="12">
+                <b-form-group
+                  id="input-group-8"
+                  label="Nro Identidad:"
+                  label-for="input-8"
+                  description=""
+                >
+                  <b-form-input
+                    id="input-8"
+                    v-model="form.nroIdentidad"
+                    required
+                    placeholder="Nro Identidad Cedula / Rif"
+                  ></b-form-input>
+                </b-form-group>
+              </b-col>
+              <b-col lg="12">
+                <b-form-group
+                  id="input-group-9"
+                  label="Pago Movil:"
+                  label-for="input-9"
+                  description=""
+                >
+                  <b-form-select v-model="form.pagoMovil" class="">
+                    <b-form-select-option :value="null"
+                      >Seleccione</b-form-select-option
+                    >
+                    <b-form-select-option value="Ahorro"
+                      >Disponible</b-form-select-option
+                    >
+                    <b-form-select-option value="Corriente"
+                      >Desactivado</b-form-select-option
+                    >
+                  </b-form-select>
+                </b-form-group>
+              </b-col>
+            </b-row>
+          </b-container>
+          <div class="text-left ml-1 mb-3">
+            <small>
+              Únicamente transferimos a cuentas corrientes Banesco, Mercantil,
+              Provincial o BOD. Transferimos mediante Pago Móvil a todos los
+              bancos en Venezuela. Al tener la opción de Pago Móvil disponible
+              tu pedido podrá ser Procesado en menor tiempo.
+            </small>
+            <br />
+          </div>
           <b-button
             class="shadow-sm"
             :disabled="!blockBtn"
@@ -177,7 +205,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "Pubg",
+  name: "Freefire",
   data() {
     return {
       btnComprarStatus: true,
@@ -190,6 +218,10 @@ export default {
         idUser: "",
         metodoPago: "",
         nroReferencia: "",
+        tipoCuentaDestino: null,
+        nombreTitular: "",
+        nroIdentidad: "",
+        pagoMovil: null,
       },
       optionsPay: [
         { text: "Banesco", value: "Banesco" },
@@ -215,45 +247,55 @@ export default {
         },
       ],
       recarga: {
-        nombre: "Pubg Mobile",
-        img: "pubg.png",
+        nombre: "Free Fire",
+        img: "freefire.png",
         tipos: [
           {
-            cant: 60,
-            bonus: 0,
-            precio: 1.19,
+            cant: 100,
+            bonus: 10,
+            precio: 1.0,
           },
           {
-            cant: 300,
-            bonus: 0,
-            precio: 5.49,
+            cant: 310,
+            bonus: 31,
+            precio: 3.0,
           },
           {
-            cant: 600,
-            bonus: 0,
-            precio: 10.99,
+            cant: 520,
+            bonus: 52,
+            precio: 5.0,
           },
           {
-            cant: 1500,
-            bonus: 0,
-            precio: 26.49,
+            cant: 1060,
+            bonus: 106,
+            precio: 10.0,
           },
           {
-            cant: 3000,
-            bonus: 0,
-            precio: 52.99,
+            cant: 2180,
+            bonus: 218,
+            precio: 20.0,
           },
           {
-            cant: 6000,
+            cant: 5600,
+            bonus: 560,
+            precio: 50.0,
+          },
+          {
+            cant: "Tarjeta Semanal",
             bonus: 0,
-            precio: 102.99,
+            precio: 2.0,
+          },
+          {
+            cant: "Tarjeta Mensual",
+            bonus: 0,
+            precio: 8.0,
           },
         ],
       },
     };
   },
   computed: {
-    tasaDolar(){
+    tasaDolar() {
       return this.$store.getters.getTasaDolar;
     },
     blockBtn() {
@@ -279,6 +321,7 @@ export default {
         email,
         direccion,
         metodoPago,
+        nroReferencia,
       } = this.form;
       if (
         nombre != "" &&
@@ -287,6 +330,7 @@ export default {
         email != "" &&
         direccion != "" &&
         metodoPago != "" &&
+        nroReferencia != "" &&
         tipo_recarga != ""
       ) {
         return true;

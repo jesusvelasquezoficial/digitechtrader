@@ -28,13 +28,15 @@ app.post("/send-pedido", async(req, res) => {
       email,
       idUser,
       metodoPago,
+      nroReferencia,
     } = req.body.form;
     const nombre_recarga = req.body.nombre_recarga;
     const tipo_recarga = req.body.tipo_recarga;
+    const precioBS = req.body.precioBS;
     // let strProd = `<br> ${emoji.get('arrow_right')} ${tipo_recarga} `;
     // let strProdWS = `\n ${emoji.get('arrow_right')} ${tipo_recarga} `;
-    let strProd = `<br> Juego: ${nombre_recarga}<br> Cantidad: ${tipo_recarga.cant}<br> Bonus: ${tipo_recarga.bonus}<br> Precio: ${tipo_recarga.precio}$`;
-    let strProdWS = `\n Juego: ${nombre_recarga}\n Cantidad: ${tipo_recarga.cant}\n Bonus: ${tipo_recarga.bonus}\n Precio: ${tipo_recarga.precio}$`;
+    let strProd = `<br> Juego: ${nombre_recarga}<br> Cantidad: ${tipo_recarga.cant}<br> Bonus: ${tipo_recarga.bonus}<br> Precio: ${tipo_recarga.precio}$<br> Precio Bs: ${precioBS}BS`;
+    let strProdWS = `\n Juego: ${nombre_recarga}\n Cantidad: ${tipo_recarga.cant}\n Bonus: ${tipo_recarga.bonus}\n Precio: ${tipo_recarga.precio}$\n Precio Bs: ${precioBS}BS`;
 
     const mensajeCorreo = `
       ${emoji.get("page_facing_up")} <b>DETALLES DEL CLIENTE</b><br>
@@ -43,6 +45,7 @@ app.post("/send-pedido", async(req, res) => {
       ${emoji.get("email")} Email: ${email}  <br>
       ${emoji.get("round_pushpin")} ID de Jugador: ${idUser}  <br>
       ${emoji.get("credit_card")} Metodo de Pago: ${metodoPago}  <br>
+      ${emoji.get("credit_card")} Nro de Referencia: ${nroReferencia}  <br>
       <br>
       ${emoji.get("page_with_curl")} <b>RECARGA</b> 
       ${strProd} <br>
@@ -61,7 +64,9 @@ app.post("/send-pedido", async(req, res) => {
       "round_pushpin"
     )} ID de Jugador: ${idUser}\n${emoji.get(
       "credit_card"
-    )}  Metodo de Pago: ${metodoPago}\n\n${emoji.get(
+    )}  Metodo de Pago: ${metodoPago}\n${emoji.get(
+      "credit_card"
+    )} Nro de Referencia: ${nroReferencia}\n\n${emoji.get(
       "page_with_curl"
     )} *RECARGA* ${strProdWS}\n`;
     // \n${emoji.get(

@@ -7,6 +7,7 @@ import Pubg from "../views/Pubg.vue";
 import Callofduty from "../views/Callofduty.vue";
 import Lol from "../views/Lol.vue";
 import Remesas from "../views/Remesas.vue";
+import Factura from "../views/Factura.vue";
 
 Vue.use(VueRouter);
 
@@ -23,7 +24,12 @@ const routes = [{
   {
     path: "/remesas",
     name: "remesas",
-    component: Home,
+    component: Remesas,
+  },
+  {
+    path: "/factura",
+    name: "factura",
+    component: Factura,
   },
   {
     path: "/recargas/free-fire",

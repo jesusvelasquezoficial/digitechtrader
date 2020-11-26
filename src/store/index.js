@@ -5,6 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    tasaPaypal: 900000,
+    tasaDolar: 965000,
+    remesa: [],
     carrito: [],
     productos: [],
     recargas: [{
@@ -150,6 +153,15 @@ export default new Vuex.Store({
     ],
   },
   getters: {
+    getRemesa: (state) => {
+      return state.remesa;
+    },
+    getTasaPaypal: (state) => {
+      return state.tasaPaypal;
+    },
+    getTasaDolar: (state) => {
+      return state.tasaDolar;
+    },
     getCantItemsInCart: (state) => {
       return state.carrito.length;
     },
@@ -170,6 +182,11 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setRemesa(state, obj) {
+      var remesa = obj.form;
+      console.log(JSON.stringify(remesa));
+      state.remesa.push(remesa);
+    },
     restarCantProduct(state, id) {
       var producto = state.carrito[id];
       producto.cant -= producto.cant > 1 ? 1 : 0;
@@ -196,6 +213,9 @@ export default new Vuex.Store({
     },
     cleanCart(state) {
       state.carrito = [];
+    },
+    cleanRemesa(state) {
+      state.remesa = [];
     },
   },
   actions: {},
