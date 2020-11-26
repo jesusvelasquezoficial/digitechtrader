@@ -54,7 +54,7 @@
           >
             <b-form @submit="siguiente" v-if="show">
               <b-row>
-                <b-col lg="12">
+                <b-col lg="4">
                   <b-form-group label="">
                     <b-form-radio-group
                       id="radio-group-2"
@@ -70,6 +70,31 @@
                       >
                         <img
                           src="@/assets/Remesas/2.png"
+                          fluid
+                          alt=""
+                          width="120px"
+                          class="rounded"
+                        />
+                      </b-form-radio>
+                    </b-form-radio-group>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="4">
+                  <b-form-group label="">
+                    <b-form-radio-group
+                      id="radio-group-2"
+                      v-model="form.divisaRecibir"
+                      name="radio-sub-component"
+                      buttons
+                      button-variant="outline-primary"
+                    >
+                      <b-form-radio
+                        required
+                        name="some-radios"
+                        value="Transferencia AirTM"
+                      >
+                        <img
+                          src="@/assets/Remesas/5.png"
                           fluid
                           alt=""
                           width="120px"
@@ -132,12 +157,30 @@ export default {
     tasaPaypal() {
       return this.$store.getters.getTasaPaypal;
     },
+    tasaAirTM() {
+      return this.$store.getters.getTasaAirTM;
+    },
     calMontoRecibir() {
+      var tasa = this.tasaPaypal;
       if (this.form.montoEnviar > 0) {
+        if (this.form.divisaRecibir == "Transferencia AirTM") {
+          tasa = (this.form.montoEnviar * this.tasaAirTM) / 100;
+          var cantPctj = (this.form.montoEnviar * 5.4) / 100;
+          this.form.montoRecibir =
+            (this.form.montoEnviar - cantPctj - 0.3) - tasa;
+          return this.form.montoRecibir.toLocaleString("es-VE");
+        } else if (
+          this.form.divisaRecibir == "Transferencia Bancaria Argentina"
+        ) {
+          var cantPctj = (this.form.montoEnviar * 5.4) / 100;
+          this.form.montoRecibir =
+            (this.form.montoEnviar - cantPctj - 0.3) * tasa;
+          return this.form.montoRecibir.toLocaleString("es-VE");
+        }
         var cantPctj = (this.form.montoEnviar * 5.4) / 100;
         this.form.montoRecibir =
-          ((this.form.montoEnviar - cantPctj) - 0.3) * this.tasaPaypal;
-        return (this.form.montoRecibir).toLocaleString('es-VE');
+          (this.form.montoEnviar - cantPctj - 0.3) * tasa;
+        return this.form.montoRecibir.toLocaleString("es-VE");
       }
       return 0;
     },

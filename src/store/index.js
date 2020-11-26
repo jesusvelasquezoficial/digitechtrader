@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     tasaPaypal: 960000,
     tasaDolar: 1100000,
+    tasaAirTM: 4.3,
     remesa: [],
     carrito: [],
     productos: [],
@@ -158,6 +159,9 @@ export default new Vuex.Store({
     },
     getTasaPaypal: (state) => {
       return state.tasaPaypal;
+    },
+    getTasaAirTM: (state) => {
+      return state.tasaAirTM;
     },
     getTasaDolar: (state) => {
       return state.tasaDolar;

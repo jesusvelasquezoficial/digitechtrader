@@ -1,7 +1,7 @@
 <template>
   <div class="freefire">
     <b-container class="my-4">
-      <b-row>
+      <b-row v-show="show">
         <b-col class="text-left mb-3" cols="12" md="6" lg="6">
           <h5 class="text-left ml-1"><b>INFORMACION DEL CLIENTE</b></h5>
           <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
@@ -199,6 +199,130 @@
           </b-button>
         </b-col>
       </b-row>
+      <b-row v-show="!show">
+        <b-col class="text-left mb-3" cols="12" md="6" lg="6">
+          <h5 class="text-left ml-1"><b>INFORMACION DEL CLIENTE</b></h5>
+          <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
+            <b-form @submit="comprar">
+              <b-row>
+                <b-col md="6">
+                  <b-form-group
+                    id="input-group-1"
+                    label="Nombre:"
+                    label-for="input-1"
+                  >
+                    <b-form-input
+                      id="input-1"
+                      v-model="form.nombre"
+                      type="text"
+                      required
+                      placeholder="Nombre"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col md="6">
+                  <b-form-group
+                    id="input-group-2"
+                    label="Apellido:"
+                    label-for="input-2"
+                  >
+                    <b-form-input
+                      id="input-2"
+                      v-model="form.apellido"
+                      type="text"
+                      required
+                      placeholder="Apellido"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="6">
+                  <b-form-group
+                    id="input-group-3"
+                    label="Telefono / WhatsApp:"
+                    label-for="input-3"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-3"
+                      v-model="form.telefono"
+                      type="number"
+                      required
+                      placeholder="+58 412 0110011"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="6">
+                  <b-form-group
+                    id="input-group-4"
+                    label="Correo Electronico:"
+                    label-for="input-4"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-4"
+                      v-model="form.email"
+                      type="email"
+                      required
+                      placeholder="Correo Electronico"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="12">
+                  <b-form-group
+                    id="input-group-5"
+                    label="Cuenta Origen:"
+                    label-for="input-5"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-5"
+                      v-model="form.cuentaOrigin"
+                      required
+                      placeholder="Micuentapaypal@ejemplo.com"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col lg="12">
+                  <b-form-group
+                    id="input-group-6"
+                    label="Cuenta Destino:"
+                    label-for="input-6"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-6"
+                      v-model="form.cuentaDestino"
+                      required
+                      placeholder="Nro de cuenta 0134-0000-0000-0000-0000"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+              </b-row>
+            </b-form>
+          </b-container>
+        </b-col>
+        <b-col class="text-left mb-3" cols="12" md="6" lg="6">
+          <h5 class="text-left ml-1"><b>IMPORTANTE</b></h5>
+          <div class="text-left ml-1 mb-3">
+            <small>
+              Únicamente transferimos a cuentas Banesco, Mercantil, Provincial o
+              BOD. Transferimos mediante Pago Móvil a todos los bancos en
+              Venezuela. Al tener la opción de Pago Móvil disponible tu pedido
+              podrá ser Procesado en menor tiempo.
+            </small>
+            <br />
+          </div>
+          <b-button
+            class="shadow-sm"
+            :disabled="!blockBtn"
+            @click="comprarAirTM"
+            variant="dark"
+            block
+          >
+            FINALIZAR PEDIDO
+          </b-button>
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -208,6 +332,7 @@ export default {
   name: "Freefire",
   data() {
     return {
+      show: false,
       btnComprarStatus: true,
       selected: "",
       form: {
@@ -308,6 +433,14 @@ export default {
       }
       return false;
     },
+    inputsValidosAirTM() {
+      var tipo_recarga = this.selected;
+      var { nombre, apellido, telefono, email, cuentaOrigin, cuentaDestino} = this.form;
+      if (nombre != "" && apellido != "" && telefono != "" && email != "" && cuentaDestino != "") {
+        return true;
+      }
+      return false;
+    },
   },
   methods: {
     tolal() {
@@ -365,6 +498,42 @@ export default {
         this.btnComprarStatus = true;
       }
     },
+    comprarAirTM(evt) {
+      this.btnComprarStatus = false;
+      evt.preventDefault();
+      // var productos = this.$store.getters.getProductInCart;
+      // var subtotal = this.$store.getters.getSubTotal;
+      var form = this.form;
+      var remesa = this.$store.getters.getRemesa;
+      var pedido = { form, remesa };
+      if (this.inputsValidosAirTM) {
+        var baseURL =
+          location.protocol + "//" + location.hostname + ":" + location.port;
+        axios
+          .post(baseURL + "/send-remesa", pedido)
+          .then((res) => {
+            // console.log(res);
+            if (res.data == "recibido") {
+              this.cleanRemesa();
+              alert(
+                "Hemos recibido su pedido, le enviaremos una factura inmediatamente."
+              );
+              this.$router.push("/");
+            } else {
+              alert("No pudimos recibir su pedido, intente mas tarde.");
+            }
+            this.btnComprarStatus = true;
+          })
+          .catch((err) => {
+            console.log(err);
+            alert("Ocurrio un error, intente mas tarde.");
+            this.btnComprarStatus = true;
+          });
+      } else {
+        alert("Por favor, llene todos los campos.");
+        this.btnComprarStatus = true;
+      }
+    },
     cleanRemesa() {
       this.form = {
         nombre: "",
@@ -384,6 +553,13 @@ export default {
     var remesa = this.$store.getters.getRemesa;
     if (remesa.length == 0) {
       this.$router.push("/remesas");
+    }else{
+      console.log(remesa);
+      if (remesa.divisaRecibir == "Transferencia AirTM") {
+        this.show = false;
+      }else{
+        this.show = true;
+      }
     }
   },
 };
