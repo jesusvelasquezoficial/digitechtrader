@@ -357,6 +357,7 @@ export default {
             if (res.data == "recibido") {
               this.cleanData();
               alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
+              this.$router.push('/');
             } else {
               alert("No pudimos recibir su pedido, intente mas tarde.");
             }

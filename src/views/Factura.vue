@@ -298,17 +298,6 @@ export default {
     blockBtn() {
       return this.btnComprarStatus;
     },
-    items() {
-      var recargas = this.$store.getters.getRecargas;
-      var items = [];
-      recargas.forEach((recarga) => {
-        items.push({
-          objeto: recarga.nombre,
-          precio: recarga.tipos.precio,
-        });
-      });
-      return items;
-    },
     inputsValidos() {
       var tipo_recarga = this.selected;
       var {
@@ -366,6 +355,7 @@ export default {
             if (res.data == "recibido") {
               this.cleanRemesa();
               alert("Hemos recibido su pedido, le enviaremos una factura inmediatamente.");
+              this.$router.push('/')
             } else {
               alert("No pudimos recibir su pedido, intente mas tarde.");
             }
