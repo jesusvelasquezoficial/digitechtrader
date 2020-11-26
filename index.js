@@ -26,9 +26,8 @@ app.post("/send-remesa", async(req, res) => {
       apellido,
       telefono,
       email,
-      idUser,
-      metodoPago,
-      nroReferencia,
+      cuentaOrigin,
+      cuentaDestino,
       tipoCuentaDestino,
       nombreTitular,
       nroIdentidad,
@@ -42,24 +41,30 @@ app.post("/send-remesa", async(req, res) => {
     } = req.body.remesa;
     // let strProd = `<br> ${emoji.get('arrow_right')} ${tipo_recarga} `;
     // let strProdWS = `\n ${emoji.get('arrow_right')} ${tipo_recarga} `;
-    let strProd = `<br> Juego: ${nombre_recarga}<br> Cantidad: ${tipo_recarga.cant}<br> Bonus: ${tipo_recarga.bonus}<br> Precio: ${tipo_recarga.precio}$<br> Precio Bs: ${precioBS}BS`;
-    let strProdWS = `\n Juego: ${nombre_recarga}\n Cantidad: ${tipo_recarga.cant}\n Bonus: ${tipo_recarga.bonus}\n Precio: ${tipo_recarga.precio}$\n Precio Bs: ${precioBS}BS`;
+    let strProd = `<br> Divisa a Enviar: ${divisaEnviar}<br> Monto a Enviar: ${montoEnviar}<br> Divisa a Recibir: ${divisaRecibir}<br> Monto a Recibir: ${montoRecibir}`;
+    let strProdWS = `\n Divisa a Enviar: ${divisaEnviar}\n Monto a Enviar: ${montoEnviar}\n Divisa a Recibir: ${divisaRecibir}\n Monto a Recibir: ${montoRecibir}`;
 
     const mensajeCorreo = `
+      ${emoji.get("page_with_curl")} <b>REMESA</b> 
+      ${strProd}
+      <br>
       ${emoji.get("page_facing_up")} <b>DETALLES DEL CLIENTE</b><br>
       ${emoji.get("large_blue_circle")} Nombre: ${nombre} ${apellido}  <br>
       ${emoji.get("telephone_receiver")} Telefono: ${telefono}  <br>
       ${emoji.get("email")} Email: ${email}  <br>
-      ${emoji.get("round_pushpin")} ID de Jugador: ${idUser}  <br>
-      ${emoji.get("credit_card")} Metodo de Pago: ${metodoPago}  <br>
-      ${emoji.get("credit_card")} Nro de Referencia: ${nroReferencia}  <br>
+      ${emoji.get("round_pushpin")} Cuenta Origen: ${cuentaOrigin}  <br>
+      ${emoji.get("round_pushpin")} Cuenta Destino: ${cuentaDestino}  <br>
+      ${emoji.get("round_pushpin")} Tipo de Cuenta Destino: ${tipoCuentaDestino}  <br>
+      ${emoji.get("round_pushpin")} Nombre del Titular: ${nombreTitular}  <br>
+      ${emoji.get("round_pushpin")} Nro de Identidad: ${nroIdentidad}  <br>
+      ${emoji.get("round_pushpin")} Pago Movil: ${pagoMovil}  <br>
       <br>
-      ${emoji.get("page_with_curl")} <b>RECARGA</b> 
-      ${strProd} <br>
     `;
     // <br>
     // ${emoji.get("heavy_dollar_sign")} <b>TOTAL = $0.00</b>
     const mensajeWS = `${emoji.get(
+      "page_with_curl"
+    )} *REMESA* ${strProdWS}\n\n${emoji.get(
       "page_facing_up"
     )} *DETALLES DEL CLIENTE* \n${emoji.get(
       "large_blue_circle"
@@ -69,13 +74,18 @@ app.post("/send-remesa", async(req, res) => {
       "email"
     )} Email: ${email}\n${emoji.get(
       "round_pushpin"
-    )} ID de Jugador: ${idUser}\n${emoji.get(
-      "credit_card"
-    )}  Metodo de Pago: ${metodoPago}\n${emoji.get(
-      "credit_card"
-    )} Nro de Referencia: ${nroReferencia}\n\n${emoji.get(
-      "page_with_curl"
-    )} *RECARGA* ${strProdWS}\n`;
+    )} Cuenta Origen: ${cuentaOrigin}\n${emoji.get(
+      "round_pushpin"
+    )} Cuenta Destino: ${cuentaDestino}\n${emoji.get(
+      "round_pushpin"
+    )} Tipo de Cuenta Destino: ${tipoCuentaDestino}\n${emoji.get(
+      "round_pushpin"
+    )} Nombre del Titular: ${nombreTitular}\n${emoji.get(
+      "round_pushpin"
+    )} Nro de Identidad: ${nroIdentidad}\n${emoji.get(
+      "round_pushpin"
+    )} Pago Movil: ${pagoMovil}\n
+    `;
     // \n${emoji.get(
     //   "heavy_dollar_sign"
     // )} *TOTAL = $0.00*
@@ -93,7 +103,7 @@ app.post("/send-remesa", async(req, res) => {
     var mailOptions = {
       from: `${nombre} ${apellido} <${email}>`,
       to: [process.env.MAIL_USER, process.env.MAIL_USER2],
-      subject: "Nuevo Pedido Digitech Recargas",
+      subject: "Nuevo Pedido Digitech Remesas",
       html: mensajeCorreo,
       // html: `<h5>Design&Developer</h5>`
     };
@@ -103,6 +113,7 @@ app.post("/send-remesa", async(req, res) => {
     // console.log(JSON.stringify(mailOptions));
     // console.log("Message sent: %s", info.messageId);
     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    res.send("recibido");
 
     await client
       .sendMessage("584123199657-1603728824@g.us", mensajeWS)
@@ -113,7 +124,6 @@ app.post("/send-remesa", async(req, res) => {
       })
       .catch((err) => console.log(err));
 
-    res.send("recibido");
     // res.redirect("/");
   } catch (err) {
     console.log(err);
@@ -198,6 +208,7 @@ app.post("/send-pedido", async(req, res) => {
     // console.log(JSON.stringify(mailOptions));
     // console.log("Message sent: %s", info.messageId);
     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    res.send("recibido");
 
     await client
       .sendMessage("584123199657-1603728824@g.us", mensajeWS)
@@ -208,7 +219,6 @@ app.post("/send-pedido", async(req, res) => {
       })
       .catch((err) => console.log(err));
 
-    res.send("recibido");
     // res.redirect("/");
   } catch (err) {
     console.log(err);

@@ -85,20 +85,20 @@
                   </b-form-group>
                 </b-col>
                 <b-col lg="12">
-                <b-form-group
-                  id="input-group-5"
-                  label="Cuenta Destino:"
-                  label-for="input-5"
-                  description=""
-                >
-                  <b-form-input
-                    id="input-5"
-                    v-model="form.cuentaDestino"
-                    required
-                    placeholder="Nro de cuenta 0134-0000-0000-0000-0000"
-                  ></b-form-input>
-                </b-form-group>
-              </b-col>
+                  <b-form-group
+                    id="input-group-6"
+                    label="Cuenta Destino:"
+                    label-for="input-6"
+                    description=""
+                  >
+                    <b-form-input
+                      id="input-6"
+                      v-model="form.cuentaDestino"
+                      required
+                      placeholder="Nro de cuenta 0134-0000-0000-0000-0000"
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
               </b-row>
             </b-form>
           </b-container>
@@ -109,9 +109,9 @@
             <b-row>
               <b-col lg="12">
                 <b-form-group
-                  id="input-group-6"
+                  id="input-group-7"
                   label="Tipo de Cuenta:"
-                  label-for="input-6"
+                  label-for="input-7"
                   description=""
                 >
                   <b-form-select v-model="form.tipoCuentaDestino" class="">
@@ -181,10 +181,10 @@
           </b-container>
           <div class="text-left ml-1 mb-3">
             <small>
-              Únicamente transferimos a cuentas Banesco, Mercantil,
-              Provincial o BOD. Transferimos mediante Pago Móvil a todos los
-              bancos en Venezuela. Al tener la opción de Pago Móvil disponible
-              tu pedido podrá ser Procesado en menor tiempo.
+              Únicamente transferimos a cuentas Banesco, Mercantil, Provincial o
+              BOD. Transferimos mediante Pago Móvil a todos los bancos en
+              Venezuela. Al tener la opción de Pago Móvil disponible tu pedido
+              podrá ser Procesado en menor tiempo.
             </small>
             <br />
           </div>
@@ -215,6 +215,8 @@ export default {
         apellido: "",
         telefono: "",
         email: "",
+        cuentaOrigin: "",
+        cuentaDestino: "",
         tipoCuentaDestino: null,
         nombreTitular: "",
         nroIdentidad: "",
@@ -300,18 +302,8 @@ export default {
     },
     inputsValidos() {
       var tipo_recarga = this.selected;
-      var {
-        nombre,
-        apellido,
-        telefono,
-        email,
-      } = this.form;
-      if (
-        nombre != "" &&
-        apellido != "" &&
-        telefono != "" &&
-        email != ""
-      ) {
+      var { nombre, apellido, telefono, email, cuentaOrigin, cuentaDestino, tipoCuentaDestino, nombreTitular, nroIdentidad, pagoMovil} = this.form;
+      if (nombre != "" && apellido != "" && telefono != "" && email != "" && cuentaDestino != "" && tipoCuentaDestino != "" && nombreTitular != "" && nroIdentidad != "" && pagoMovil != "") {
         return true;
       }
       return false;
@@ -354,8 +346,10 @@ export default {
             // console.log(res);
             if (res.data == "recibido") {
               this.cleanRemesa();
-              alert("Hemos recibido su pedido, le enviaremos una factura inmediatamente.");
-              this.$router.push('/')
+              alert(
+                "Hemos recibido su pedido, le enviaremos una factura inmediatamente."
+              );
+              this.$router.push("/");
             } else {
               alert("No pudimos recibir su pedido, intente mas tarde.");
             }
@@ -385,6 +379,12 @@ export default {
       this.selected = "";
       this.$store.commit("cleanRemesa");
     },
+  },
+  mounted() {
+    var remesa = this.$store.getters.getRemesa;
+    if (remesa.length == 0) {
+      this.$router.push("/remesas");
+    }
   },
 };
 </script>
