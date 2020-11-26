@@ -2,7 +2,7 @@
   <div class="freefire">
     <b-container class="my-4">
       <b-row>
-        <b-col class="text-left mb-3" cols="12" md="5" lg="5">
+        <b-col class="text-left mb-3" cols="12" md="6" lg="6">
           <h5 class="text-left ml-1"><b>INFORMACION DEL CLIENTE</b></h5>
           <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
             <b-form @submit="comprar">
@@ -103,7 +103,7 @@
             </b-form>
           </b-container>
         </b-col>
-        <b-col class="text-left mb-3" cols="12" md="5" lg="5">
+        <b-col class="text-left mb-3" cols="12" md="6" lg="6">
           <h5 class="text-left ml-1"><b>IMPORTANTE</b></h5>
           <b-container class="mb-2 pt-3 shadow-sm bg-white rounded border">
             <b-row>
@@ -181,7 +181,7 @@
           </b-container>
           <div class="text-left ml-1 mb-3">
             <small>
-              Únicamente transferimos a cuentas corrientes Banesco, Mercantil,
+              Únicamente transferimos a cuentas Banesco, Mercantil,
               Provincial o BOD. Transferimos mediante Pago Móvil a todos los
               bancos en Venezuela. Al tener la opción de Pago Móvil disponible
               tu pedido podrá ser Procesado en menor tiempo.
@@ -215,9 +215,6 @@ export default {
         apellido: "",
         telefono: "",
         email: "",
-        idUser: "",
-        metodoPago: "",
-        nroReferencia: "",
         tipoCuentaDestino: null,
         nombreTitular: "",
         nroIdentidad: "",
@@ -319,19 +316,12 @@ export default {
         apellido,
         telefono,
         email,
-        direccion,
-        metodoPago,
-        nroReferencia,
       } = this.form;
       if (
         nombre != "" &&
         apellido != "" &&
         telefono != "" &&
-        email != "" &&
-        direccion != "" &&
-        metodoPago != "" &&
-        nroReferencia != "" &&
-        tipo_recarga != ""
+        email != ""
       ) {
         return true;
       }
@@ -364,20 +354,18 @@ export default {
       // var productos = this.$store.getters.getProductInCart;
       // var subtotal = this.$store.getters.getSubTotal;
       var form = this.form;
-      var nombre_recarga = this.recarga.nombre;
-      var tipo_recarga = this.selected;
-      var precioBS = this.tolal();
-      var pedido = { form, nombre_recarga, tipo_recarga, precioBS };
+      var remesa = this.$store.getters.getRemesa;
+      var pedido = { form, remesa };
       if (this.inputsValidos) {
         var baseURL =
           location.protocol + "//" + location.hostname + ":" + location.port;
         axios
-          .post(baseURL + "/send-pedido", pedido)
+          .post(baseURL + "/send-remesa", pedido)
           .then((res) => {
             // console.log(res);
             if (res.data == "recibido") {
-              this.cleanData();
-              alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
+              this.cleanRemesa();
+              alert("Hemos recibido su pedido, le enviaremos una factura inmediatamente.");
             } else {
               alert("No pudimos recibir su pedido, intente mas tarde.");
             }
@@ -393,17 +381,19 @@ export default {
         this.btnComprarStatus = true;
       }
     },
-    cleanData() {
+    cleanRemesa() {
       this.form = {
         nombre: "",
         apellido: "",
         telefono: "",
         email: "",
-        direccion: "",
-        metodoPago: "",
+        tipoCuentaDestino: null,
+        nombreTitular: "",
+        nroIdentidad: "",
+        pagoMovil: null,
       };
       this.selected = "";
-      // this.$store.commit("cleanCart");
+      this.$store.commit("cleanRemesa");
     },
   },
 };

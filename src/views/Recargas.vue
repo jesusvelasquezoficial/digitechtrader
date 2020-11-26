@@ -26,7 +26,7 @@
       </b-carousel>
       <div class="mt-3">
         <b-row id="categorias" cols="2">
-          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3" >
+          <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
             <router-link to="/recargas/free-fire" class="text-decoration-none">
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
@@ -41,7 +41,10 @@
             </router-link>
           </b-col>
           <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
-            <router-link to="/recargas/pubg-mobile" class="text-decoration-none">
+            <router-link
+              to="/recargas/pubg-mobile"
+              class="text-decoration-none"
+            >
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Recargas/pubg.png"
@@ -55,7 +58,10 @@
             </router-link>
           </b-col>
           <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
-            <router-link to="/recargas/call-of-duty" class="text-decoration-none">
+            <router-link
+              to="/recargas/call-of-duty"
+              class="text-decoration-none"
+            >
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Recargas/callofduty.jpg"
@@ -69,7 +75,10 @@
             </router-link>
           </b-col>
           <b-col cols="12" sm="6" md="4" lg="3" class="mb-3">
-            <router-link to="/recargas/league-of-legends" class="text-decoration-none">
+            <router-link
+              to="/recargas/league-of-legends"
+              class="text-decoration-none"
+            >
               <b-card class="card-categoria shadow-sm" text-variant="dark">
                 <img
                   src="@/assets/Recargas/lol.png"
@@ -174,8 +183,8 @@ export default {
     },
   },
   methods: {
-    getUrlImg(img){
-      return '@/assets/Recargas/'+img;
+    getUrlImg(img) {
+      return "@/assets/Recargas/" + img;
     },
     onSlideStart(slide) {
       this.sliding = true;
@@ -227,6 +236,9 @@ export default {
       };
       this.$store.commit("cleanCart");
     },
+  },
+  mounted() {
+    this.$store.commit("cleanRemesa");
   },
 };
 </script>

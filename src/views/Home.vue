@@ -81,6 +81,9 @@ export default {
   components: {
     // HelloWorld
   },
+  mounted() {
+    this.$store.commit("cleanRemesa");
+  },   
 };
 </script>
 <style scoped>

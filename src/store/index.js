@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tasaPaypal: 900000,
-    tasaDolar: 965000,
+    tasaPaypal: 960000,
+    tasaDolar: 1100000,
     remesa: [],
     carrito: [],
     productos: [],
@@ -185,7 +185,7 @@ export default new Vuex.Store({
     setRemesa(state, obj) {
       var remesa = obj.form;
       console.log(JSON.stringify(remesa));
-      state.remesa.push(remesa);
+      state.remesa = remesa;
     },
     restarCantProduct(state, id) {
       var producto = state.carrito[id];

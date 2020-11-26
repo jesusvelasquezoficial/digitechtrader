@@ -126,20 +126,6 @@ export default {
         montoRecibir: 0,
       },
       show: true,
-      fields: [
-        {
-          key: "nombre",
-          label: "Producto",
-          sortable: true,
-          variant: "light",
-        },
-        {
-          key: "subtotal",
-          label: "Sub-total",
-          sortable: true,
-          variant: "light",
-        },
-      ],
     };
   },
   computed: {
@@ -147,23 +133,16 @@ export default {
       return this.$store.getters.getTasaPaypal;
     },
     calMontoRecibir() {
-      this.form.montoRecibir = this.form.montoEnviar * this.tasaPaypal;
-      return this.form.montoRecibir;
+      if (this.form.montoEnviar > 0) {
+        var cantPctj = (this.form.montoEnviar * 5.4) / 100;
+        this.form.montoRecibir =
+          ((this.form.montoEnviar - cantPctj) - 0.3) * this.tasaPaypal;
+        return (this.form.montoRecibir).toLocaleString('es-VE');
+      }
+      return 0;
     },
     blockBtn() {
       return this.btnSiguienteStatus;
-    },
-    items() {
-      var productos = this.$store.getters.getProductInCart;
-      var items = [];
-      productos.forEach((producto) => {
-        items.push({
-          nombre: producto.nombre,
-          cant: producto.cant,
-          subtotal: (producto.precio * producto.cant).toFixed(2),
-        });
-      });
-      return items;
     },
     inputsValidos() {
       var {
@@ -191,28 +170,7 @@ export default {
       var remesa = { form };
       if (this.inputsValidos) {
         this.$store.commit("setRemesa", remesa);
-        this.$router.push('/factura');
-        var baseURL =
-          location.protocol + "//" + location.hostname + ":" + location.port;
-        axios
-          .post(baseURL + "/send-pedido", remesa)
-          .then((res) => {
-            // console.log(res);
-            if (res.data == "recibido") {
-              this.cleanRemesa();
-              alert("Hemos recibido su pedido, lo contactaremos de inmediato.");
-              this.btnSiguienteStatus = true;
-            } else {
-              alert("No pudimos recibir su pedido, intente mas tarde.");
-              this.btnSiguienteStatus = true;
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            alert(JSON.stringify(this.form));
-            // alert("Ocurrio un error, intente mas tarde.");
-            this.btnSiguienteStatus = true;
-          });
+        this.$router.push("/factura");
       } else {
         alert("Por favor, Seleccione y llene todos los campos.");
         this.btnSiguienteStatus = true;
@@ -227,6 +185,9 @@ export default {
       };
       this.$store.commit("cleanRemesa");
     },
+  },
+  mounted() {
+    this.cleanRemesa;
   },
 };
 </script>
