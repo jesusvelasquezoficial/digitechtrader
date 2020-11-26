@@ -278,7 +278,7 @@
                       id="input-5"
                       v-model="form.cuentaOrigin"
                       required
-                      placeholder="Micuentapaypal@ejemplo.com"
+                      placeholder="MiCuentaPaypal@ejemplo.com"
                     ></b-form-input>
                   </b-form-group>
                 </b-col>
@@ -293,7 +293,7 @@
                       id="input-6"
                       v-model="form.cuentaDestino"
                       required
-                      placeholder="Nro de cuenta 0134-0000-0000-0000-0000"
+                      placeholder="MiCuentaAirTM@ejemplo.com"
                     ></b-form-input>
                   </b-form-group>
                 </b-col>

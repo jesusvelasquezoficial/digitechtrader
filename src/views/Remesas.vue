@@ -116,6 +116,7 @@
                       id="input-2"
                       v-model="calMontoRecibir"
                       required
+                      disabled
                       placeholder="Monto a Recibir"
                     ></b-form-input>
                   </b-form-group>
@@ -197,8 +198,8 @@ export default {
       if (
         divisaEnviar != "" &&
         divisaRecibir != "" &&
-        montoEnviar != "" &&
-        montoRecibir != ""
+        montoEnviar > 0 &&
+        montoRecibir > 0
       ) {
         return true;
       }
