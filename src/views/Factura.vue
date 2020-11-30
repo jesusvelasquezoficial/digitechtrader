@@ -168,10 +168,10 @@
                     <b-form-select-option :value="null"
                       >Seleccione</b-form-select-option
                     >
-                    <b-form-select-option value="Ahorro"
+                    <b-form-select-option value="Disponible"
                       >Disponible</b-form-select-option
                     >
-                    <b-form-select-option value="Corriente"
+                    <b-form-select-option value="Desactivado"
                       >Desactivado</b-form-select-option
                     >
                   </b-form-select>
