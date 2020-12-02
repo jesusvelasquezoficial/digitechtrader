@@ -39,8 +39,8 @@
               </b-dropdown-item>
               <b-dropdown-item href="#" disabled>
                 <b-icon icon="journals"></b-icon>
-                CURSOS ONLINE
-              </b-dropdown-item><b-dropdown-item href="#" disabled>
+                CURSOS ONLINE </b-dropdown-item
+              ><b-dropdown-item href="#" disabled>
                 <b-icon icon="camera-reels"></b-icon>
                 STREAMIING
               </b-dropdown-item>
@@ -49,6 +49,15 @@
         </b-collapse>
       </b-container>
     </b-navbar>
+    <marquee behavior="" direction="">
+      <small>
+        <span>{{fechaHoy}}</span>
+        | <b>Tasa Paypal:</b> Bs. {{tasaPaypal.toLocaleString("es-VE")}} / Bs. 920.000 para la venta
+        | <b>Tasa Dolar:</b> Bs. {{tasaDolar.toLocaleString("es-VE")}} / Bs. 1.000.000 para la venta
+        | <b>Tasa AirTM:</b> Bs. 950.000 / Bs. 1.000.000 para la venta
+      </small>
+    </marquee>
+
     <router-view />
     <!-- FOOTER -->
     <div class="bg-white border">
@@ -139,10 +148,21 @@ export default {
     return {};
   },
   computed: {
+    fechaHoy(){
+      var fecha = Date();
+      return fecha;
+    },
+    tasaPaypal() {
+      return this.$store.getters.getTasaPaypal;
+    },
+    tasaDolar() {
+      return this.$store.getters.getTasaDolar;
+    },
+    tasaAirTM() {
+      return this.$store.getters.getTasaAirTM;
+    },
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>
 

@@ -153,6 +153,14 @@
               <div
                 class="d-flex w-100 justify-content-between align-items-center"
               >
+                <h6 class="mb-1"><b>Tasa Dolar</b></h6>
+                <small><b>{{ tasaDolar.toLocaleString("es-VE") }} Bs</b></small>
+              </div>
+            </b-list-group-item>
+            <b-list-group-item class="flex-column align-items-center">
+              <div
+                class="d-flex w-100 justify-content-between align-items-center"
+              >
                 <h3 class="mb-1"><b>Total:</b></h3>
                 <h4><b>{{ tolal() }} Bs</b></h4>
               </div>

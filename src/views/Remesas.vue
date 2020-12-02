@@ -124,6 +124,10 @@
               </b-row>
             </b-form>
           </b-container>
+          <div class="mb-2 d-flex w-100 justify-content-between align-items-center">
+            <h6 class="mt-1"><b>Tasa PayPal</b></h6>
+            <small class="mb-1"><b>{{ tasaPaypal.toLocaleString("es-VE") }} Bs </b></small>
+          </div>
           <b-button
             class="shadow-sm"
             :disabled="!blockBtn"
@@ -155,6 +159,9 @@ export default {
     };
   },
   computed: {
+    tasaDolar() {
+      return this.$store.getters.getTasaDolar;
+    },
     tasaPaypal() {
       return this.$store.getters.getTasaPaypal;
     },
@@ -168,7 +175,7 @@ export default {
           tasa = (this.form.montoEnviar * this.tasaAirTM) / 100;
           var cantPctj = (this.form.montoEnviar * 5.4) / 100;
           this.form.montoRecibir =
-            (this.form.montoEnviar - cantPctj - 0.3) - tasa;
+            this.form.montoEnviar - cantPctj - 0.3 - tasa;
           return this.form.montoRecibir.toLocaleString("es-VE");
         } else if (
           this.form.divisaRecibir == "Transferencia Bancaria Argentina"
