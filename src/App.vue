@@ -52,9 +52,9 @@
     <marquee behavior="" direction="">
       <small>
         <span>{{fechaHoy}}</span>
-        | <b>Tasa Paypal:</b> Bs. {{tasaPaypal.toLocaleString("es-VE")}} / Bs. 920.000 para la venta
-        | <b>Tasa Dolar:</b> Bs. {{tasaDolar.toLocaleString("es-VE")}} / Bs. 1.000.000 para la venta
-        | <b>Tasa AirTM:</b> Bs. 950.000 / Bs. 1.000.000 para la venta
+        | <b>Tasa Paypal:</b> Bs. {{tasaPaypal.toLocaleString("es-VE")}} / Bs. 1.000.000 para la venta
+        | <b>Tasa Dolar:</b> Bs. {{tasaDolar.toLocaleString("es-VE")}} / Bs. 1.200.000 para la venta
+        | <b>Tasa AirTM:</b> Bs. 1.150.000 / Bs. 1.200.000 para la venta
       </small>
     </marquee>
     <router-view />
