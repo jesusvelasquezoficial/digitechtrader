@@ -1,6 +1,6 @@
 <template>
   <div class="lol">
-    <b-container class="my-4">
+    <b-container class="my-2">
       <b-row>
         <b-col cols="12" md="3" lg="2" class="text-left mb-4">
           <div class="p-2">

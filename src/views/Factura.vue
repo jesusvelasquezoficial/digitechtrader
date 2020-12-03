@@ -1,6 +1,6 @@
 <template>
   <div class="freefire">
-    <b-container class="my-4">
+    <b-container class="my-2">
       <b-row v-show="show">
         <b-col class="text-left mb-3" cols="12" md="6" lg="6">
           <h5 class="text-left ml-1"><b>INFORMACION DEL CLIENTE</b></h5>

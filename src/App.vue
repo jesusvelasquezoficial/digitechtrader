@@ -57,7 +57,6 @@
         | <b>Tasa AirTM:</b> Bs. 950.000 / Bs. 1.000.000 para la venta
       </small>
     </marquee>
-
     <router-view />
     <!-- FOOTER -->
     <div class="bg-white border">

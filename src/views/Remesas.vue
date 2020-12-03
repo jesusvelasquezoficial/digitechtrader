@@ -1,6 +1,6 @@
 <template>
   <div class="factura">
-    <b-container class="my-4">
+    <b-container class="my-2">
       <b-row>
         <b-col class="text-left mb-3" cols="12" md="6">
           <h5 class="text-left ml-1"><b>ENVIAR DESDE:</b></h5>
@@ -36,6 +36,7 @@
                     description=""
                   >
                     <b-form-input
+                      :formatter="formatNumber"
                       id="input-1"
                       v-model="form.montoEnviar"
                       required
@@ -214,6 +215,9 @@ export default {
     },
   },
   methods: {
+    formatNumber(value){
+      return value;
+    },
     siguiente(evt) {
       this.btnSiguienteStatus = false;
       evt.preventDefault();
@@ -223,6 +227,7 @@ export default {
         this.$store.commit("setRemesa", remesa);
         this.$router.push("/factura");
       } else {
+        console.log(form);
         alert("Por favor, Seleccione y llene todos los campos.");
         this.btnSiguienteStatus = true;
       }

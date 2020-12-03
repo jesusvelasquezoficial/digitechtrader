@@ -1,6 +1,6 @@
 <template>
   <div class="recargas">
-    <b-container class="my-4">
+    <b-container class="my-2">
       <b-carousel
         id="carousel-1"
         class="mt-3 shadow-sm"
