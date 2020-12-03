@@ -125,9 +125,13 @@
               </b-row>
             </b-form>
           </b-container>
-          <div class="mb-2 d-flex w-100 justify-content-between align-items-center">
+          <div
+            class="mb-2 d-flex w-100 justify-content-between align-items-center"
+          >
             <h6 class="mt-1"><b>Tasa PayPal</b></h6>
-            <small class="mb-1"><b>{{ tasaPaypal.toLocaleString("es-VE") }} Bs </b></small>
+            <small class="mb-1"
+              ><b>{{ tasaPaypal.toLocaleString("es-VE") }} Bs </b></small
+            >
           </div>
           <b-button
             class="shadow-sm"
