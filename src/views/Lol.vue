@@ -210,7 +210,7 @@ export default {
         nroReferencia: "",
       },
       optionsPay: [
-        { text: "Banesco", value: "Banesco" },
+        // { text: "Banesco", value: "Banesco" },
         { text: "Venezuela", value: "Venezuela" },
         { text: "Pago Movil", value: "Pago Movil" },
         // { text: "Provincial", value: "Provincial" },
