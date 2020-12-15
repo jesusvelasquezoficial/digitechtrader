@@ -8,6 +8,7 @@ import Callofduty from "../views/Callofduty.vue";
 import Lol from "../views/Lol.vue";
 import Remesas from "../views/Remesas.vue";
 import Factura from "../views/Factura.vue";
+import EditarTasas from "../views/EditarTasas.vue";
 
 Vue.use(VueRouter);
 
@@ -50,6 +51,11 @@ const routes = [{
     path: "/recargas/league-of-legends",
     name: "leagueoflegends",
     component: Lol,
+  },
+  {
+    path: "/editarTasas",
+    name: "editartasas",
+    component: EditarTasas,
   },
 ];
 

@@ -5,9 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tasaPaypal: 950000,
-    tasaDolar: 1200000,
+    tasaPaypal: 990000,
+    tasaDolar: 1250000,
     tasaAirTM: 4.3,
+    tasaPaypalSell: 1110000,
+    tasaDolarSell: 13500000,
+    tasaAirTMSell: 4.3,
     remesa: [],
     carrito: [],
     productos: [],
@@ -157,14 +160,23 @@ export default new Vuex.Store({
     getRemesa: (state) => {
       return state.remesa;
     },
+    getTasaDolar: (state) => {
+      return state.tasaDolar;
+    },
     getTasaPaypal: (state) => {
       return state.tasaPaypal;
     },
     getTasaAirTM: (state) => {
       return state.tasaAirTM;
     },
-    getTasaDolar: (state) => {
-      return state.tasaDolar;
+    getTasaDolarSell: (state) => {
+      return state.tasaDolarSell;
+    },
+    getTasaPaypalSell: (state) => {
+      return state.tasaPaypalSell;
+    },
+    getTasaAirTMSell: (state) => {
+      return state.tasaAirTMSell;
     },
     getCantItemsInCart: (state) => {
       return state.carrito.length;
@@ -186,6 +198,28 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setTasas(state, obj) {
+      var {
+        tasaDolar,
+        tasaPaypal,
+        tasaAirTM,
+        tasaPaypalSell,
+        tasaDolarSell,
+        tasaAirTMSell,
+      } = obj.form;
+      console.log(JSON.stringify(tasaDolar));
+      console.log(JSON.stringify(tasaPaypal));
+      console.log(JSON.stringify(tasaAirTM));
+      console.log(JSON.stringify(tasaPaypalSell));
+      console.log(JSON.stringify(tasaDolarSell));
+      console.log(JSON.stringify(tasaAirTMSell));
+      state.tasaPaypal = tasaPaypal;
+      state.tasaDolar = tasaDolar;
+      state.tasaAirTM = tasaAirTM;
+      state.tasaPaypalSell = tasaPaypalSell;
+      state.tasaDolarSell = tasaDolarSell;
+      state.tasaAirTMSell = tasaAirTMSell;
+    },
     setRemesa(state, obj) {
       var remesa = obj.form;
       console.log(JSON.stringify(remesa));

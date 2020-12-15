@@ -52,8 +52,8 @@
     <marquee behavior="" direction="">
       <small>
         <span>{{fechaHoy}}</span>
-        | <b>Tasa Paypal:</b> Bs. {{tasaPaypal.toLocaleString("es-VE")}} / Bs. 1.000.000 para la venta
-        | <b>Tasa Dolar:</b> Bs. {{tasaDolar.toLocaleString("es-VE")}} / Bs. 1.200.000 para la venta
+        | <b>Tasa Dolar:</b> Bs. {{tasaDolar.toLocaleString("es-VE")}} / Bs. {{tasaDolarSell.toLocaleString("es-VE")}} para la venta
+        | <b>Tasa Paypal:</b> Bs. {{tasaPaypal.toLocaleString("es-VE")}} / Bs. {{tasaPaypalSell.toLocaleString("es-VE")}} para la venta
         | <b>Tasa AirTM:</b> Bs. 1.150.000 / Bs. 1.200.000 para la venta
       </small>
     </marquee>
@@ -151,14 +151,23 @@ export default {
       var fecha = Date();
       return fecha;
     },
-    tasaPaypal() {
-      return this.$store.getters.getTasaPaypal;
-    },
     tasaDolar() {
       return this.$store.getters.getTasaDolar;
     },
+    tasaPaypal() {
+      return this.$store.getters.getTasaPaypal;
+    },
     tasaAirTM() {
       return this.$store.getters.getTasaAirTM;
+    },
+    tasaDolarSell() {
+      return this.$store.getters.getTasaDolarSell;
+    },
+    tasaPaypalSell() {
+      return this.$store.getters.getTasaPaypalSell;
+    },
+    tasaAirTMSell() {
+      return this.$store.getters.getTasaAirTMSell;
     },
   },
   methods: {},
