@@ -6,10 +6,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasaPaypal: 990000,
-    tasaDolar: 1250000,
+    tasaDolar: 1426000,
     tasaAirTM: 4.3,
-    tasaPaypalSell: 1110000,
-    tasaDolarSell: 13500000,
+    tasaPaypalSell: 1210000,
+    tasaDolarSell: 1600000,
     tasaAirTMSell: 4.3,
     remesa: [],
     carrito: [],
